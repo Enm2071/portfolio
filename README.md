@@ -28,28 +28,30 @@ El sitio presenta mis **habilidades**, **proyectos**, **experiencia**, **contact
 
 ## 📂 **Estructura del Proyecto**
 
-/
+```bash
+/  
 ├── public/
-│ ├── assets/
-│ │ ├── Ernesto_Nuñez_Marrero_-_Full_Stack_Senior_Developer.pdf
-│ │ └── images...
-│ └── favicon.svg
+│   ├── assets/
+│   │   ├── Ernesto_Nuñez_Marrero_-_Full_Stack_Senior_Developer.pdf
+│   │   └── images...
+│   └── favicon.svg
 │
 ├── src/
-│ ├── components/
-│ ├── layouts/
-│ ├── pages/
-│ │ └── index.astro
-│ ├── sections/
-│ │ ├── Hero.astro
-│ │ ├── Skills.astro
-│ │ ├── Projects.astro
-│ │ ├── About.astro
-│ │ └── Contact.astro
-│ └── styles/
-│ └── globals.css
+│   ├── components/
+│   ├── layouts/
+│   ├── pages/
+│   │   └── index.astro
+│   ├── sections/
+│   │   ├── Hero.astro
+│   │   ├── Skills.astro
+│   │   ├── Projects.astro
+│   │   ├── About.astro
+│   │   └── Contact.astro
+│   └── styles/
+│       └── globals.css
 │
 ├── astro.config.mjs
 ├── tailwind.config.cjs
 ├── package.json
 └── README.md
+```
