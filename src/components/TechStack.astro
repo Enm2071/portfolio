@@ -1,12 +1,29 @@
 ---
-import { Server, Smartphone, Globe, Layout, Database } from "lucide-astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
-const skills = [
+import { Layout, Server, Globe, Smartphone, Database } from "lucide-astro";
+
+type SkillCategory =
+  | "skills_category_frontend"
+  | "skills_category_backend"
+  | "skills_category_devops"
+  | "skills_category_mobile"
+  | "skills_category_database";
+  ;
+
+interface Skill {
+  category: SkillCategory;
+  icon: any;
+  items: string[];
+}
+
+const skills: Skill[] = [
   {
-    category: "Frontend",
+    category: "skills_category_frontend",
     icon: Layout,
-    items: [
-      "ReactJS",
+    items: [      "ReactJS",
       "Next.js",
       "Angular",
       "Astro",
@@ -17,14 +34,13 @@ const skills = [
       "CSS",
       "HTML",
       "Redux",
-      "Micro-Frontends"
-    ]
+      "Micro-Frontends"]
   },
   {
-    category: "Backend",
+    category: "skills_category_backend",
     icon: Server,
-    items: [
-      "Node.js",
+    items: [  "Node.js",
+    "Redis",
       "Express.js",
       ".NET",
       ".NET Core",
@@ -32,11 +48,10 @@ const skills = [
       "GraphQL",
       "REST APIs",
       "Golang",
-      "Jest"
-    ]
+      "Jest"]
   },
-  {
-    category: "Databases",
+    {
+    category: "skills_category_database",
     icon: Database,
     items: [
       "MySQL",
@@ -44,12 +59,12 @@ const skills = [
       "SQL Server",
       "PostgreSQL",
       "AWS DynamoDB",
-      "Dapper",
-      "Entity Framework"
+      "Firebase Firestore",
+      "MariaDB",
     ]
   },
   {
-    category: "DevOps & Cloud",
+    category: "skills_category_devops",
     icon: Globe,
     items: [
       "AWS Serverless",
@@ -68,18 +83,11 @@ const skills = [
     ]
   },
   {
-    category: "Mobile",
+    category: "skills_category_mobile",
     icon: Smartphone,
-    items: [
-      "React Native",
-      "Expo",
-      "iOS",
-      "Android",
-      "Mobile UI/UX"
-    ]
+    items: ["React Native", "Expo", "iOS", "Android", "Mobile UI/UX"]
   }
 ];
-
 ---
 
 <section id="skills" class="skills-section">
@@ -87,11 +95,10 @@ const skills = [
 
     <!-- Header -->
     <div class="skills-header">
-      <h2 class="skills-title">
-        Arsenal <span class="primary">Técnico</span>
-      </h2>
+      <h2 class="skills-title" set:html={t("skills_title")}></h2>
+
       <p class="skills-subtitle">
-        Me especializo en un stack moderno que prioriza el rendimiento, la escalabilidad y la experiencia de usuario.
+        {t("skills_subtitle")}
       </p>
     </div>
 
@@ -107,8 +114,11 @@ const skills = [
             <skill.icon class="icon-md" />
           </div>
 
-          <h3 class="skill-category">{skill.category}</h3>
+          <h3 class="skill-category">
+            {t(skill.category)}
+          </h3>
 
+          <!-- Tags -->
           <div class="skill-tags">
             {skill.items.map(item => (
               <span class="tag">{item}</span>
@@ -120,6 +130,8 @@ const skills = [
 
   </div>
 </section>
+
+
 
 <style>
   :root {

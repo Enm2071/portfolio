@@ -90,6 +90,20 @@ export const ui = {
     project_3_title: "Task Management App",
     project_3_description:
       "Herramienta de gestión de proyectos colaborativa con tableros kanban y chat de equipo.",
+
+    /* ============================
+        SKILLS
+    ============================ */
+
+    skills_title: 'Arsenal <span class="primary">Técnico</span>',
+    skills_subtitle:
+      'Me especializo en un stack moderno que prioriza el rendimiento, la escalabilidad y la experiencia de usuario.',
+
+    skills_category_frontend: "Frontend",
+    skills_category_backend: "Backend",
+    skills_category_devops: "DevOps",
+    skills_category_mobile: "Mobile",
+    skills_category_database: "Base de Datos",
   },
 
   en: {
@@ -173,5 +187,17 @@ export const ui = {
 
     project_3_title: "Task Management App",
     project_3_description: "A collaborative project management tool featuring kanban boards and team chat.",
+
+    /* ============================
+        SKILLS
+    ============================ */
+    skills_title: 'Technical <span class="primary">Toolkit</span>',
+    skills_subtitle:
+      'I specialize in a modern tech stack focused on performance, scalability, and exceptional user experience.',
+    skills_category_frontend: "Frontend",
+    skills_category_backend: "Backend",
+    skills_category_devops: "DevOps",
+    skills_category_mobile: "Mobile",
+    skills_category_database: "Database",
   },
 } as const;
