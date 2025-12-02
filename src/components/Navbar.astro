@@ -1,5 +1,9 @@
 ---
 import { Code2, Menu } from "lucide-astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <nav id="navbar" class="navbar">
@@ -7,18 +11,18 @@ import { Code2, Menu } from "lucide-astro";
         <!-- Logo -->
         <a href="/" class="logo">
             <Code2 class="icon-primary" />
-            <span class="logo-text"
-                >Dev<span class="primary">Portfolio</span></span
-            >
+            <span class="logo-text">
+                Dev<span class="primary">Portfolio</span>
+            </span>
         </a>
 
         <!-- Desktop Nav -->
         <div class="desktop-nav">
-            <a href="#about" class="nav-link">Sobre Mí</a>
-            <a href="#skills" class="nav-link">Habilidades</a>
-            <a href="#projects" class="nav-link">Proyectos</a>
+            <a href="#about" class="nav-link">{t("nav_about")}</a>
+            <a href="#skills" class="nav-link">{t("nav_skills")}</a>
+            <a href="#projects" class="nav-link">{t("nav_projects")}</a>
 
-            <a href="#contact" class="btn-primary">Contactar</a>
+            <a href="#contact" class="btn-primary">{t("nav_contact")}</a>
         </div>
 
         <!-- Mobile Nav Toggle -->
@@ -33,11 +37,11 @@ import { Code2, Menu } from "lucide-astro";
     <div id="mobile-menu" class="mobile-menu">
         <button id="close-mobile" class="close-btn">×</button>
 
-        <a href="#about" class="mobile-link">Sobre Mí</a>
-        <a href="#skills" class="mobile-link">Habilidades</a>
-        <a href="#projects" class="mobile-link">Proyectos</a>
+        <a href="#about" class="mobile-link">{t("nav_about")}</a>
+        <a href="#skills" class="mobile-link">{t("nav_skills")}</a>
+        <a href="#projects" class="mobile-link">{t("nav_projects")}</a>
 
-        <a href="#contact" class="btn-primary full">Contactar</button>
+        <a href="#contact" class="btn-primary full">{t("nav_contact")}</a>
     </div>
 </nav>
 
@@ -146,7 +150,6 @@ import { Code2, Menu } from "lucide-astro";
         cursor: pointer;
         box-shadow: 0px 3px 10px rgba(59, 130, 246, 0.4);
         text-decoration: none;
-
     }
 
     .btn-primary.full {
@@ -238,7 +241,7 @@ import { Code2, Menu } from "lucide-astro";
 </style>
 
 <script>
- const navbar = document.getElementById("navbar");
+    const navbar = document.getElementById("navbar");
     const mobileMenu = document.getElementById("mobile-menu");
     const openBtn = document.getElementById("mobile-btn");
     const closeBtn = document.getElementById("close-mobile");
@@ -257,7 +260,7 @@ import { Code2, Menu } from "lucide-astro";
     // Mobile menu open
     openBtn?.addEventListener("click", () => {
         if (mobileMenu) {
-            document.body.classList.add("menu-open");   // <-- NUEVO
+            document.body.classList.add("menu-open");
             mobileMenu.style.transform = "translateX(0)";
         }
     });
@@ -266,7 +269,7 @@ import { Code2, Menu } from "lucide-astro";
     closeBtn?.addEventListener("click", () => {
         if (mobileMenu) {
             mobileMenu.style.transform = "translateX(100%)";
-            document.body.classList.remove("menu-open");  // <-- NUEVO
+            document.body.classList.remove("menu-open");
         }
     });
 </script>

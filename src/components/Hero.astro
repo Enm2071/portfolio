@@ -1,6 +1,10 @@
 ---
 import profileImage from "@assets/stock_images/professional_softwar_8750beb0.jpg";
 import { ArrowRight, Download } from "lucide-astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="about" class="hero">
@@ -17,37 +21,17 @@ import { ArrowRight, Download } from "lucide-astro";
            LEFT SIDE — TEXT
       ============================ -->
       <div class="hero-text animate-slide-in-left">
-        <h1 class="hero-title">
-          Hola, soy <span class="text-gradient">Ernesto Núñez</span>.<br />
-          Desarrollador Full Stack.
-        </h1>
+        <h1 class="hero-title" set:html={t("about_title")}></h1>
 
         <!-- Two-Column Professional Summary -->
         <div class="hero-paragraphs">
-          <p>
-            Soy un desarrollador de software con más de 7 años de experiencia
-            transformando ideas complejas en soluciones digitales elegantes,
-            funcionales y orientadas al usuario. Mi especialidad es el desarrollo
-            frontend con tecnologías como ReactJS, Next.js, React Native,
-            TypeScript y JavaScript, lo que me permite crear interfaces modernas,
-            escalables y de alto rendimiento. A nivel backend, cuento con
-            experiencia intermedia en Node.js, .NET y Python, además de integrar
-            servicios y arquitecturas basadas en AWS.
-          </p>
-
-          <p>
-            Mi trabajo se fundamenta en buenas prácticas, patrones de diseño,
-            APIs eficientes y estrategias de pruebas robustas que garantizan calidad
-            y confiabilidad en cada proyecto. Me caracterizo por combinar autonomía
-            técnica con una colaboración efectiva en equipos multidisciplinarios,
-            siempre enfocado en construir productos que generen impacto real y
-            resultados sostenibles.
-          </p>
+          <p>{t("about_paragraph1")}</p>
+          <p>{t("about_paragraph2")}</p>
         </div>
 
         <div class="hero-buttons">
           <a class="btn-primary" href="#projects">
-            Ver Proyectos <ArrowRight class="icon-sm" />
+            {t("about_viewProjects")} <ArrowRight class="icon-sm" />
           </a>
 
           <a
@@ -55,22 +39,22 @@ import { ArrowRight, Download } from "lucide-astro";
             download="Ernesto_Nuñez_Marrero_CV.pdf"
             class="btn-outline"
           >
-            Descargar CV <Download class="icon-sm" />
+            {t("about_downloadCV")} <Download class="icon-sm" />
           </a>
         </div>
 
         <div class="hero-stats">
           <div>
             <p class="stat-number">7+</p>
-            <p class="stat-label">Años de Exp.</p>
+            <p class="stat-label">{t("about_yearsExp")}</p>
           </div>
           <div>
             <p class="stat-number">50+</p>
-            <p class="stat-label">Proyectos</p>
+            <p class="stat-label">{t("about_projects")}</p>
           </div>
           <div>
             <p class="stat-number">100%</p>
-            <p class="stat-label">Compromiso</p>
+            <p class="stat-label">{t("about_commitment")}</p>
           </div>
         </div>
       </div>
@@ -86,8 +70,8 @@ import { ArrowRight, Download } from "lucide-astro";
           <!-- <img src={profileImage} alt="Profile" class="real-image" /> -->
 
           <div class="floating-badge">
-            <p class="badge-label">Status actual</p>
-            <p class="badge-text">Construyendo la próxima generación de apps web</p>
+            <p class="badge-label">{t("about_currentStatus")}</p>
+            <p class="badge-text">{t("about_currentStatusMessage")}</p>
           </div>
         </div>
 
@@ -190,6 +174,19 @@ import { ArrowRight, Download } from "lucide-astro";
     transform: translateX(-50px);
   }
 
+  .hero-paragraphs {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-paragraphs {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
   .hero-title {
     font-size: 3rem;
     font-weight: 800;
@@ -204,31 +201,6 @@ import { ArrowRight, Download } from "lucide-astro";
     }
   }
 
-  /* ============================
-        TWO-COLUMN PARAGRAPHS
-  ============================ */
-  .hero-paragraphs {
-    display: grid;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  @media (min-width: 1024px) {
-    .hero-paragraphs {
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-  }
-
-  .hero-paragraphs p {
-    font-size: 1.15rem;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  /* ============================
-        BUTTONS
-  ============================ */
   .hero-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -255,11 +227,11 @@ import { ArrowRight, Download } from "lucide-astro";
     border-radius: 0.75rem;
     border: 1px solid var(--border);
     color: var(--foreground);
-    backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
+    backdrop-filter: blur(4px);
   }
 
   .icon-sm {
@@ -267,9 +239,6 @@ import { ArrowRight, Download } from "lucide-astro";
     height: 18px;
   }
 
-  /* ============================
-        STATS
-  ============================ */
   .hero-stats {
     margin-top: 3rem;
     display: flex;
@@ -290,7 +259,11 @@ import { ArrowRight, Download } from "lucide-astro";
   /* ============================
         IMAGE FRAME
   ============================ */
-  .hero-image { opacity: 0; transform: scale(0.95); }
+  .hero-image {
+    position: relative;
+    opacity: 0;
+    transform: scale(0.95);
+  }
 
   .image-frame {
     position: relative;
@@ -349,13 +322,25 @@ import { ArrowRight, Download } from "lucide-astro";
         ANIMATIONS
   ============================ */
   @keyframes slide-in-left {
-    from { opacity: 0; transform: translateX(-50px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   @keyframes fade-in {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   .animate-slide-in-left {
