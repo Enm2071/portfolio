@@ -1,102 +1,92 @@
 ---
 import { Mail, MapPin, Phone, Send } from "lucide-astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import type { AstroGlobal } from "astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="contact" class="contact-section">
   <!-- Background decorations -->
   <div class="decor decor-left"></div>
   <div class="decor decor-right"></div>
-
   <div class="contact-container">
     <div class="contact-grid">
-
-      <!-- LEFT SIDE -->
+      <!-- LEFT -->
       <div class="contact-text reveal-left">
-        <h2 class="contact-title">
-          Trabajemos <span class="text-gradient">Juntos</span>
-        </h2>
+        <h2 class="contact-title" set:html={t("contact_title")} />
 
-        <p class="contact-description">
-          Actualmente estoy disponible para proyectos freelance y roles full-time. 
-          Si tienes un proyecto que necesita un toque creativo, me encantaría escuchar sobre él.
-        </p>
+        <p class="contact-description">{t("contact_description")}</p>
 
         <div class="contact-info">
-
-          <!-- Email -->
           <div class="info-row">
-            <div class="info-icon">
-              <Mail class="icon-sm" />
-            </div>
+            <div class="info-icon"><Mail class="icon-sm" /></div>
             <div>
-              <p class="info-label">Email</p>
-              <a href="mailto:enm2071@gmail.com" class="info-value">
-                enm2071@gmail.com
+              <p class="info-label">{t("contact_emailLabel")}</p>
+              <a href={"mailto:" + t("contact_emailValue")} class="info-value">
+                {t("contact_emailValue")}
               </a>
             </div>
           </div>
 
-          <!-- Phone -->
           <div class="info-row">
-            <div class="info-icon">
-              <Phone class="icon-sm" />
-            </div>
+            <div class="info-icon"><Phone class="icon-sm" /></div>
             <div>
-              <p class="info-label">Teléfono</p>
-              <a href="tel:+18293350738" class="info-value">+1 829 335-0738</a>
+              <p class="info-label">{t("contact_phoneLabel")}</p>
+              <a href={"tel:" + t("contact_phoneValue")} class="info-value">
+                {t("contact_phoneValue")}
+              </a>
             </div>
           </div>
 
-          <!-- Location -->
           <div class="info-row">
-            <div class="info-icon">
-              <MapPin class="icon-sm" />
-            </div>
+            <div class="info-icon"><MapPin class="icon-sm" /></div>
             <div>
-              <p class="info-label">Ubicación</p>
-              <p class="info-value">Santo Domingo, República Dominicana</p>
+              <p class="info-label">{t("contact_locationLabel")}</p>
+              <p class="info-value">{t("contact_locationValue")}</p>
             </div>
           </div>
-
         </div>
       </div>
 
-      <!-- RIGHT SIDE (FORM) -->
+      <!-- FORM -->
       <div class="contact-form reveal-right">
         <div class="form-card">
-
           <div class="form-content">
-
             <div class="form-row">
               <div class="form-field">
-                <label>Nombre</label>
-                <input placeholder="Juan" />
+                <label>{t("contact_fname")}</label>
+                <input placeholder={t("contact_fname_placeholder")} />
               </div>
 
               <div class="form-field">
-                <label>Apellido</label>
-                <input placeholder="Pérez" />
+                <label>{t("contact_lname")}</label>
+                <input placeholder={t("contact_lname_placeholder")} />
               </div>
             </div>
 
             <div class="form-field">
-              <label>Email</label>
-              <input type="email" placeholder="juan@ejemplo.com" />
+              <label>{t("contact_form_email")}</label>
+              <input
+                type="email"
+                placeholder={t("contact_form_email_placeholder")}
+              />
             </div>
 
             <div class="form-field">
-              <label>Mensaje</label>
-              <textarea placeholder="Cuéntame sobre tu proyecto..."></textarea>
+              <label>{t("contact_message")}</label>
+              <textarea placeholder={t("contact_message_placeholder")}
+              ></textarea>
             </div>
 
             <button class="btn-submit">
-              Enviar Mensaje <Send class="icon-sm" />
+              {t("contact_send")}
+              <Send class="icon-sm" />
             </button>
-
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -111,8 +101,8 @@ import { Mail, MapPin, Phone, Send } from "lucide-astro";
     --foreground: #f8fafc;
     --muted: #a3a3a3;
     --background: #111418;
-    --background-soft: rgba(17,20,24,0.4);
-    --border-light: rgba(255,255,255,0.1);
+    --background-soft: rgba(17, 20, 24, 0.4);
+    --border-light: rgba(255, 255, 255, 0.1);
   }
 
   /* ============================================================
@@ -122,7 +112,7 @@ import { Mail, MapPin, Phone, Send } from "lucide-astro";
     position: relative;
     padding: 6rem 0;
     overflow: hidden;
-    background: rgba(255,255,255,0.03);
+    background: rgba(255, 255, 255, 0.03);
   }
 
   /* ============================================================
@@ -168,11 +158,11 @@ import { Mail, MapPin, Phone, Send } from "lucide-astro";
   }
 
   .reveal-left.in-view {
-    animation: fade-in-left 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+    animation: fade-in-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   .reveal-right.in-view {
-    animation: fade-in-right 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+    animation: fade-in-right 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   /* ============================================================
@@ -187,16 +177,20 @@ import { Mail, MapPin, Phone, Send } from "lucide-astro";
   }
 
   .decor-left {
-    top: 0; left: 0;
-    width: 260px; height: 260px;
-    background: rgba(59,130,246,0.15);
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 260px;
+    background: rgba(59, 130, 246, 0.15);
     transform: translate(-50%, -50%);
   }
 
   .decor-right {
-    bottom: 0; right: 0;
-    width: 380px; height: 380px;
-    background: rgba(168,85,247,0.15);
+    bottom: 0;
+    right: 0;
+    width: 380px;
+    height: 380px;
+    background: rgba(168, 85, 247, 0.15);
     transform: translate(35%, 35%);
   }
 
@@ -234,83 +228,129 @@ import { Mail, MapPin, Phone, Send } from "lucide-astro";
     line-height: 1.6;
   }
 
-  .contact-info { display: flex; flex-direction: column; gap: 1.75rem; }
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
 
-  .info-row { display: flex; align-items: center; gap: 1rem; }
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
   .info-icon {
-    width: 3rem; height: 3rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
-    background: rgba(59,130,246,0.12);
-    display: flex; align-items: center; justify-content: center;
+    background: rgba(59, 130, 246, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--primary);
   }
 
-  .icon-sm { width: 20px; height: 20px; }
+  .icon-sm {
+    width: 20px;
+    height: 20px;
+  }
 
-  .info-label { font-size: .85rem; color: var(--muted); }
+  .info-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
 
-  .info-value { color: var(--foreground); font-size: 1rem; font-weight: 500; }
+  .info-value {
+    color: var(--foreground);
+    font-size: 1rem;
+    font-weight: 500;
+  }
 
-  .contact-form { }
+  .contact-form {
+  }
 
   .form-card {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     border-radius: 1rem;
     border: 1px solid var(--border-light);
-    padding: .5rem;
+    padding: 0.5rem;
   }
 
-  .form-content { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .form-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
   @media (max-width: 600px) {
-    .form-content { padding: 0.5rem; }
+    .form-content {
+      padding: 0.5rem;
+    }
   }
 
-  .form-row { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+  .form-row {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+  }
 
-  .form-field { display: flex; flex-direction: column; gap: .4rem; }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
 
-  label { font-size: .85rem; font-weight: 600; color: var(--foreground); }
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--foreground);
+  }
 
-  input, textarea {
-    background: rgba(255,255,255,0.07);
+  input,
+  textarea {
+    background: rgba(255, 255, 255, 0.07);
     border: 1px solid var(--border-light);
-    padding: .65rem .75rem;
-    border-radius: .5rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.5rem;
     color: var(--foreground);
     outline: none;
-    transition: border .2s;
+    transition: border 0.2s;
   }
 
-  input:focus, textarea:focus { border-color: var(--primary); }
+  input:focus,
+  textarea:focus {
+    border-color: var(--primary);
+  }
 
   .btn-submit {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     background: var(--primary);
     color: white;
     border: none;
-    padding: .9rem;
-    border-radius: .6rem;
+    padding: 0.9rem;
+    border-radius: 0.6rem;
     font-size: 1rem;
     font-weight: 500;
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: .5rem;
+    gap: 0.5rem;
     cursor: pointer;
-    transition: background .2s;
+    transition: background 0.2s;
   }
 
-  .btn-submit:hover { background: #2563eb; }
+  .btn-submit:hover {
+    background: #2563eb;
+  }
 
   .text-gradient {
     background-image: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
     -webkit-background-clip: text;
     color: transparent;
   }
-
 </style>
 
 <script>
@@ -323,10 +363,10 @@ import { Mail, MapPin, Phone, Send } from "lucide-astro";
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.2 },
   );
 
-  document.querySelectorAll(".reveal-left, .reveal-right").forEach(el =>
-    observer.observe(el)
-  );
+  document
+    .querySelectorAll(".reveal-left, .reveal-right")
+    .forEach((el) => observer.observe(el));
 </script>
