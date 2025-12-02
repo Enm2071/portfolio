@@ -81,17 +81,41 @@ export const ui = {
       "Una selección de mi trabajo reciente, desde aplicaciones web hasta sistemas de diseño.",
     projects_github_button: "Ver cuenta de GitHub",
 
-    project_1_title: "E-Commerce Dashboard",
-    project_1_description:
-      "Panel de análisis completo para minoristas online con visualización de datos en tiempo real.",
+    // project_1_title: "E-Commerce Dashboard",
+    // project_1_description:
+    //   "Panel de análisis completo para minoristas online con visualización de datos en tiempo real.",
 
-    project_2_title: "AI Content Generator",
-    project_2_description:
-      "Aplicación SaaS que utiliza la API de OpenAI para ayudar a crear textos de marketing en segundos.",
+    // project_2_title: "AI Content Generator",
+    // project_2_description:
+    //   "Aplicación SaaS que utiliza la API de OpenAI para ayudar a crear textos de marketing en segundos.",
 
-    project_3_title: "Task Management App",
-    project_3_description:
-      "Herramienta de gestión de proyectos colaborativa con tableros kanban y chat de equipo.",
+    // project_3_title: "Task Management App",
+    // project_3_description:
+    //   "Herramienta de gestión de proyectos colaborativa con tableros kanban y chat de equipo.",
+
+      project_1_title: "Módulos y Servicios Next.js para Thryv",
+  project_1_description:
+    "Desarrollo de módulos escalables y optimización de servicios usando Next.js, React, Node.js y microservicios. Implementación de interfaces y mejoras de rendimiento para la plataforma Thryv.",
+
+  project_2_title: "Migración de Flask a GraphQL",
+  project_2_description:
+    "Reestructuración completa de servicios, migrándolos de Flask a GraphQL. Mejoras significativas en rendimiento, reducción de latencia y creación de pruebas automatizadas para garantizar estabilidad.",
+
+  project_3_title: "Extensión WordPress con Micro-Frontends",
+  project_3_description:
+    "Construcción de una extensión avanzada para WordPress con arquitectura micro-frontend, permitiendo gestionar campañas, logos, landing pages y automatizaciones.",
+
+  project_4_title: "Portal Administrativo para Gestión de Usuarios",
+  project_4_description:
+    "Desarrollo de un portal administrativo con React, Redux y .NET Core para gestionar reportes, perfiles, servicios integrados y módulos avanzados del sistema.",
+
+  project_5_title: "App Móvil de Reservaciones Premium",
+  project_5_description:
+    "Aplicación móvil para clientes premium de bancos dominicanos con soporte multilenguaje, pagos integrados y administración de reservaciones en aeropuertos.",
+
+  project_6_title: "Plataforma Web y Móvil de Peajes",
+  project_6_description:
+    "Sistema web y móvil para gestión de peajes en RD: perfiles, recargas, reportes, ERP integrado y apps nativas para iOS/Android.",
 
     /* ============================
         SKILLS
@@ -179,16 +203,40 @@ export const ui = {
       "A selection of my recent work, ranging from web applications to design systems.",
     projects_github_button: "View GitHub Account",
 
-    project_1_title: "E-Commerce Dashboard",
-    project_1_description:
-      "A complete analytics dashboard for online retailers with real-time data visualization.",
+    // project_1_title: "E-Commerce Dashboard",
+    // project_1_description:
+    //   "A complete analytics dashboard for online retailers with real-time data visualization.",
 
-    project_2_title: "AI Content Generator",
-    project_2_description:
-      "A SaaS application using the OpenAI API to help create marketing text in seconds.",
+    // project_2_title: "AI Content Generator",
+    // project_2_description:
+    //   "A SaaS application using the OpenAI API to help create marketing text in seconds.",
 
-    project_3_title: "Task Management App",
-    project_3_description: "A collaborative project management tool featuring kanban boards and team chat.",
+    // project_3_title: "Task Management App",
+    // project_3_description: "A collaborative project management tool featuring kanban boards and team chat.",
+
+     project_1_title: "Next.js Modules and Service Integrations for Thryv",
+  project_1_description:
+    "Development of scalable Next.js modules and service optimizations using React, Node.js, and a microservices architecture. Enhanced UI performance and user experience across the platform.",
+
+  project_2_title: "Flask to GraphQL Migration",
+  project_2_description:
+    "Complete service migration from Flask to GraphQL, achieving improved response times, optimized data retrieval, and fully automated testing coverage.",
+
+  project_3_title: "WordPress Extension with Micro-Frontend Architecture",
+  project_3_description:
+    "Advanced WordPress extension supporting email campaigns, logo builders, landing pages, and automation—powered by a robust micro-frontend architecture.",
+
+  project_4_title: "Administrative Portal for User & Reporting Management",
+  project_4_description:
+    "Administrative portal built with React, Redux, and .NET Core for managing reports, user profiles, integrated services, and advanced modules.",
+
+  project_5_title: "Premium Reservation Mobile App",
+  project_5_description:
+    "Mobile app for premium banking clients with multi-language support, secure payments, and reservation management for VIP airport lounges.",
+
+  project_6_title: "Web & Mobile Toll Management Platform",
+  project_6_description:
+    "Comprehensive toll system with user profiles, balance management, recharge features, reporting, ERP integration, and mobile apps for iOS/Android.",
 
     /* ============================
         SKILLS
