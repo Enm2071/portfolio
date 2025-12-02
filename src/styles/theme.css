@@ -1,0 +1,36 @@
+/* Variables, utilidades, estilos custom */
+:root {
+  --background: 220 15% 8%;
+  --foreground: 210 20% 98%;
+
+  --primary: 217 91% 60%;
+  --primary-foreground: 210 20% 98%;
+
+  --secondary: 220 15% 18%;
+  --secondary-foreground: 210 20% 98%;
+
+  --muted: 220 15% 18%;
+  --muted-foreground: 215 15% 65%;
+
+  --card: 220 15% 12%;
+  --card-foreground: 210 20% 98%;
+
+  --border: 220 15% 20%;
+}
+
+/* ------- Utilities that React Navbar uses ------- */
+
+.text-primary { color: hsl(var(--primary)); }
+.text-muted-foreground { color: hsl(var(--muted-foreground)); }
+.text-foreground { color: hsl(var(--foreground)); }
+
+.bg-background { background-color: hsl(var(--background)); }
+.bg-background\/80 { background-color: hsl(var(--background) / 0.8); }
+
+.bg-primary { background-color: hsl(var(--primary)); }
+
+/* Drawer background */
+.backdrop-blur-xl { backdrop-filter: blur(24px); }
+
+/* Glass border */
+.border-white\/5 { border-color: rgba(255,255,255,0.05); }

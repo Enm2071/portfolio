@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro Basics</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style>
+	html {
+		scroll-behavior: smooth;
+	}
+
+	/* ================================
+   VARIABLES (THEME SYSTEM)
+================================= */
+
+	:root {
+		/* Dark Charcoal Background */
+		--background: 220 15% 8%; /* #111418 */
+		--foreground: 210 20% 98%; /* #f8fafc */
+
+		/* Glassy Cards */
+		--card: 220 15% 12%;
+		--card-foreground: 210 20% 98%;
+
+		--popover: 220 15% 12%;
+		--popover-foreground: 210 20% 98%;
+
+		/* Electric Blue Accent */
+		--primary: 217 91% 60%; /* #3b82f6 */
+		--primary-foreground: 210 20% 98%;
+
+		--secondary: 220 15% 18%;
+		--secondary-foreground: 210 20% 98%;
+
+		--muted: 220 15% 18%;
+		--muted-foreground: 215 15% 65%;
+
+		--accent: 217 91% 60%;
+		--accent-foreground: 210 20% 98%;
+
+		--destructive: 0 63% 31%;
+		--destructive-foreground: 210 40% 98%;
+
+		--border: 220 15% 20%;
+		--input: 220 15% 20%;
+		--ring: 217 91% 60%;
+
+		--radius: 0.5rem;
+
+		--font-sans: "Inter", sans-serif;
+		--font-mono: "JetBrains Mono", monospace;
+
+		--radius-sm: calc(var(--radius) - 4px);
+		--radius-md: calc(var(--radius) - 2px);
+		--radius-lg: var(--radius);
+	}
+
+	/* ================================
+   BASE STYLES
+================================= */
+
+	* {
+		border-color: hsl(var(--border));
+	}
+
+	body {
+		font-family: var(--font-sans);
+		-webkit-font-smoothing: antialiased;
+		background-color: hsl(var(--background));
+		color: hsl(var(--foreground));
+		margin: 0;
+		padding: 0;
+	}
+
+	/* ================================
+   UTILITIES (REPLACEMENT FOR TAILWIND)
+================================= */
+
+	/* Gradient Text */
+	.text-gradient {
+		background: linear-gradient(to right, #60a5fa, #a855f7);
+		-webkit-background-clip: text;
+		color: transparent;
+	}
+
+	/* Glass Card */
+	.glass-card {
+		background-color: hsl(var(--card) / 0.5);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	/* Background helpers */
+	.bg-background {
+		background-color: hsl(var(--background));
+	}
+
+	.bg-card {
+		background-color: hsl(var(--card));
+	}
+
+	.bg-primary {
+		background-color: hsl(var(--primary));
+	}
+
+	.bg-secondary {
+		background-color: hsl(var(--secondary));
+	}
+
+	/* Text helpers */
+	.text-foreground {
+		color: hsl(var(--foreground));
+	}
+
+	.text-primary {
+		color: hsl(var(--primary));
+	}
+
+	.text-muted-foreground {
+		color: hsl(var(--muted-foreground));
+	}
+
+	/* Border helpers */
+	.border-primary {
+		border-color: hsl(var(--primary));
+	}
+
+	.border-muted {
+		border-color: hsl(var(--muted));
+	}
+
+	/* Radius helpers */
+	.radius-sm {
+		border-radius: var(--radius-sm);
+	}
+	.radius-md {
+		border-radius: var(--radius-md);
+	}
+	.radius-lg {
+		border-radius: var(--radius-lg);
+	}
+</style>

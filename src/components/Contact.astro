@@ -1,0 +1,328 @@
+---
+import { Mail, MapPin, Phone, Send } from "lucide-astro";
+---
+
+<section id="contact" class="contact-section">
+  <!-- Background decorations -->
+  <div class="decor decor-left"></div>
+  <div class="decor decor-right"></div>
+
+  <div class="contact-container">
+    <div class="contact-grid">
+
+      <!-- LEFT SIDE -->
+      <div class="contact-text reveal-left">
+        <h2 class="contact-title">
+          Trabajemos <span class="text-gradient">Juntos</span>
+        </h2>
+
+        <p class="contact-description">
+          Actualmente estoy disponible para proyectos freelance y roles full-time. 
+          Si tienes un proyecto que necesita un toque creativo, me encantaría escuchar sobre él.
+        </p>
+
+        <div class="contact-info">
+
+          <!-- Email -->
+          <div class="info-row">
+            <div class="info-icon">
+              <Mail class="icon-sm" />
+            </div>
+            <div>
+              <p class="info-label">Email</p>
+              <a href="mailto:enm2071@gmail.com" class="info-value">
+                enm2071@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="info-row">
+            <div class="info-icon">
+              <Phone class="icon-sm" />
+            </div>
+            <div>
+              <p class="info-label">Teléfono</p>
+              <a href="tel:+18293350738" class="info-value">+1 829 335-0738</a>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="info-row">
+            <div class="info-icon">
+              <MapPin class="icon-sm" />
+            </div>
+            <div>
+              <p class="info-label">Ubicación</p>
+              <p class="info-value">Santo Domingo, República Dominicana</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE (FORM) -->
+      <div class="contact-form reveal-right">
+        <div class="form-card">
+
+          <div class="form-content">
+
+            <div class="form-row">
+              <div class="form-field">
+                <label>Nombre</label>
+                <input placeholder="Juan" />
+              </div>
+
+              <div class="form-field">
+                <label>Apellido</label>
+                <input placeholder="Pérez" />
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label>Email</label>
+              <input type="email" placeholder="juan@ejemplo.com" />
+            </div>
+
+            <div class="form-field">
+              <label>Mensaje</label>
+              <textarea placeholder="Cuéntame sobre tu proyecto..."></textarea>
+            </div>
+
+            <button class="btn-submit">
+              Enviar Mensaje <Send class="icon-sm" />
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ============================================================
+     VARIABLES
+  ============================================================ */
+  :root {
+    --primary: #3b82f6;
+    --purple: #a855f7;
+    --foreground: #f8fafc;
+    --muted: #a3a3a3;
+    --background: #111418;
+    --background-soft: rgba(17,20,24,0.4);
+    --border-light: rgba(255,255,255,0.1);
+  }
+
+  /* ============================================================
+     BASE
+  ============================================================ */
+  .contact-section {
+    position: relative;
+    padding: 6rem 0;
+    overflow: hidden;
+    background: rgba(255,255,255,0.03);
+  }
+
+  /* ============================================================
+     ANIMATIONS (FRAMER-LIKE)
+  ============================================================ */
+  @keyframes fade-in-left {
+    0% {
+      opacity: 0;
+      transform: translateX(-24px);
+      filter: blur(6px);
+    }
+    60% {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes fade-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(24px);
+      filter: blur(6px);
+    }
+    60% {
+      opacity: 1;
+      transform: translateX(-4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+      filter: blur(0);
+    }
+  }
+
+  .reveal-left,
+  .reveal-right {
+    opacity: 0;
+  }
+
+  .reveal-left.in-view {
+    animation: fade-in-left 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+
+  .reveal-right.in-view {
+    animation: fade-in-right 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+
+  /* ============================================================
+     GRID / TEXT / FORM (same as yours)
+  ============================================================ */
+
+  .decor {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .decor-left {
+    top: 0; left: 0;
+    width: 260px; height: 260px;
+    background: rgba(59,130,246,0.15);
+    transform: translate(-50%, -50%);
+  }
+
+  .decor-right {
+    bottom: 0; right: 0;
+    width: 380px; height: 380px;
+    background: rgba(168,85,247,0.15);
+    transform: translate(35%, 35%);
+  }
+
+  .contact-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .contact-grid {
+    display: grid;
+    gap: 3rem;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .contact-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+  }
+
+  .contact-description {
+    color: var(--muted);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 1.75rem; }
+
+  .info-row { display: flex; align-items: center; gap: 1rem; }
+
+  .info-icon {
+    width: 3rem; height: 3rem;
+    border-radius: 50%;
+    background: rgba(59,130,246,0.12);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary);
+  }
+
+  .icon-sm { width: 20px; height: 20px; }
+
+  .info-label { font-size: .85rem; color: var(--muted); }
+
+  .info-value { color: var(--foreground); font-size: 1rem; font-weight: 500; }
+
+  .contact-form { }
+
+  .form-card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    border-radius: 1rem;
+    border: 1px solid var(--border-light);
+    padding: .5rem;
+  }
+
+  .form-content { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-row { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+
+  .form-field { display: flex; flex-direction: column; gap: .4rem; }
+
+  label { font-size: .85rem; font-weight: 600; color: var(--foreground); }
+
+  input, textarea {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--border-light);
+    padding: .65rem .75rem;
+    border-radius: .5rem;
+    color: var(--foreground);
+    outline: none;
+    transition: border .2s;
+  }
+
+  input:focus, textarea:focus { border-color: var(--primary); }
+
+  .btn-submit {
+    margin-top: .5rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: .9rem;
+    border-radius: .6rem;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    cursor: pointer;
+    transition: background .2s;
+  }
+
+  .btn-submit:hover { background: #2563eb; }
+
+  .text-gradient {
+    background-image: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target); // once: true
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  document.querySelectorAll(".reveal-left, .reveal-right").forEach(el =>
+    observer.observe(el)
+  );
+</script>

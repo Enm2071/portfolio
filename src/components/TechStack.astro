@@ -1,0 +1,296 @@
+---
+import { Server, Smartphone, Globe, Layout, Database } from "lucide-astro";
+
+const skills = [
+  {
+    category: "Frontend",
+    icon: Layout,
+    items: [
+      "ReactJS",
+      "Next.js",
+      "Angular",
+      "Astro",
+      "Vue.js",
+      "JavaScript",
+      "TypeScript",
+      "Material UI",
+      "CSS",
+      "HTML",
+      "Redux",
+      "Micro-Frontends"
+    ]
+  },
+  {
+    category: "Backend",
+    icon: Server,
+    items: [
+      "Node.js",
+      "Express.js",
+      ".NET",
+      ".NET Core",
+      "Python",
+      "GraphQL",
+      "REST APIs",
+      "Golang",
+      "Jest"
+    ]
+  },
+  {
+    category: "Databases",
+    icon: Database,
+    items: [
+      "MySQL",
+      "MongoDB",
+      "SQL Server",
+      "PostgreSQL",
+      "AWS DynamoDB",
+      "Dapper",
+      "Entity Framework"
+    ]
+  },
+  {
+    category: "DevOps & Cloud",
+    icon: Globe,
+    items: [
+      "AWS Serverless",
+      "AWS Lambda",
+      "AWS API Gateway",
+      "AWS S3",
+      "AWS CloudFront",
+      "AWS IAM",
+      "AWS CloudWatch",
+      "AWS EC2",
+      "Docker",
+      "CI/CD",
+      "Vercel",
+      "Linux",
+      "GIT"
+    ]
+  },
+  {
+    category: "Mobile",
+    icon: Smartphone,
+    items: [
+      "React Native",
+      "Expo",
+      "iOS",
+      "Android",
+      "Mobile UI/UX"
+    ]
+  }
+];
+
+---
+
+<section id="skills" class="skills-section">
+  <div class="skills-container">
+
+    <!-- Header -->
+    <div class="skills-header">
+      <h2 class="skills-title">
+        Arsenal <span class="primary">Técnico</span>
+      </h2>
+      <p class="skills-subtitle">
+        Me especializo en un stack moderno que prioriza el rendimiento, la escalabilidad y la experiencia de usuario.
+      </p>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="skills-grid">
+      {skills.map((skill, index) => (
+        <div
+          class="skill-card reveal"
+          style={`animation-delay: ${index * 0.1}s`}
+        >
+          <!-- Icon -->
+          <div class="skill-icon">
+            <skill.icon class="icon-md" />
+          </div>
+
+          <h3 class="skill-category">{skill.category}</h3>
+
+          <div class="skill-tags">
+            {skill.items.map(item => (
+              <span class="tag">{item}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  :root {
+    --primary: #3b82f6;
+    --foreground: #f8fafc;
+    --muted: #a1a1aa;
+    --secondary: #1e1e22;
+    --card-bg: rgba(255,255,255,0.05);
+    --border-light: rgba(255,255,255,0.08);
+  }
+
+  .skills-section {
+    padding: 6rem 0;
+    background: rgba(255,255,255,0.05);
+    position: relative;
+  }
+
+  .skills-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Header */
+  .skills-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .skills-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--foreground);
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .skills-title {
+      font-size: 3rem;
+    }
+  }
+
+  .primary {
+    color: var(--primary);
+  }
+
+  .skills-subtitle {
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* Grid */
+  .skills-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .skills-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Card */
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    transition: border-color 0.3s ease;
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .skill-card:hover {
+    border-color: var(--primary);
+  }
+
+  /* Icon */
+  .skill-icon {
+    width: 3rem;
+    height: 3rem;
+    background: rgba(59,130,246,0.12);
+    border-radius: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    transition: transform 0.2s ease;
+  }
+
+  .skill-card:hover .skill-icon {
+    transform: scale(1.1);
+  }
+
+  .icon-md {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  /* Category */
+  .skill-category {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--foreground);
+  }
+
+  /* Tags */
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--border-light);
+    color: var(--foreground);
+  }
+
+  /* Animation identical to Framer Motion */
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(24px);
+      filter: blur(6px);
+    }
+    60% {
+      opacity: 1;
+      transform: translateY(-4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  .reveal.in-view {
+    animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+</style>
+
+<script>
+  // Intersection observer for Framer-like animation
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target); // Once, like Framer
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+</script>

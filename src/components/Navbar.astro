@@ -1,0 +1,272 @@
+---
+import { Code2, Menu } from "lucide-astro";
+---
+
+<nav id="navbar" class="navbar">
+    <div class="navbar-container">
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <Code2 class="icon-primary" />
+            <span class="logo-text"
+                >Dev<span class="primary">Portfolio</span></span
+            >
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="desktop-nav">
+            <a href="#about" class="nav-link">Sobre Mí</a>
+            <a href="#skills" class="nav-link">Habilidades</a>
+            <a href="#projects" class="nav-link">Proyectos</a>
+
+            <a href="#contact" class="btn-primary">Contactar</a>
+        </div>
+
+        <!-- Mobile Nav Toggle -->
+        <div class="mobile-nav-toggle">
+            <button id="mobile-btn" class="btn-icon">
+                <Menu class="menu-icon" />
+            </button>
+        </div>
+    </div>
+
+    <!-- Drawer Mobile -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="close-mobile" class="close-btn">×</button>
+
+        <a href="#about" class="mobile-link">Sobre Mí</a>
+        <a href="#skills" class="mobile-link">Habilidades</a>
+        <a href="#projects" class="mobile-link">Proyectos</a>
+
+        <a href="#contact" class="btn-primary full">Contactar</button>
+    </div>
+</nav>
+
+<style>
+    /* =======================
+     VARIABLES
+  ======================= */
+    :root {
+        --primary: #3b82f6;
+        --foreground: #f8fafc;
+        --muted-foreground: #a3a3a3;
+        --background: rgba(17, 20, 24, 1);
+        --background-blur: rgba(17, 20, 24, 0.8);
+        --card: rgba(255, 255, 255, 0.05);
+    }
+
+    /* =======================
+     NAVBAR BASE
+  ======================= */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1.5rem 0;
+        z-index: 100;
+        transition: all 0.3s ease;
+        background: transparent;
+    }
+
+    body.menu-open .navbar {
+        position: fixed;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        border-bottom: none !important;
+        padding: 1.5rem 0 !important;
+    }
+
+    .navbar-container {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* =======================
+     LOGO
+  ======================= */
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: white;
+        font-weight: bold;
+        font-size: 1.25rem;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .icon-primary {
+        width: 32px;
+        height: 32px;
+        color: var(--primary);
+    }
+
+    .logo-text .primary {
+        color: var(--primary);
+    }
+
+    /* =======================
+     DESKTOP NAV
+  ======================= */
+    .desktop-nav {
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+    }
+
+    .nav-link {
+        color: var(--muted-foreground);
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+        color: var(--primary);
+    }
+
+    .btn-primary {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0px 3px 10px rgba(59, 130, 246, 0.4);
+        text-decoration: none;
+
+    }
+
+    .btn-primary.full {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    /* =======================
+     MOBILE MENU TOGGLE
+  ======================= */
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    @media (min-width: 768px) {
+        .mobile-nav-toggle {
+            display: none;
+        }
+    }
+
+    .btn-icon {
+        background: transparent;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: background 0.2s;
+    }
+
+    .btn-icon:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-icon {
+        width: 24px;
+        height: 24px;
+        color: white;
+    }
+
+    /* =======================
+     MOBILE DRAWER
+  ======================= */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 260px;
+        height: 100%;
+        background: var(--background-blur);
+        backdrop-filter: blur(20px);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 50;
+    }
+
+    .close-btn {
+        align-self: flex-end;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+    }
+
+    .mobile-link {
+        font-size: 1.125rem;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    .mobile-link:hover {
+        color: var(--primary);
+    }
+
+    /* =======================
+     SCROLL EFFECT
+  ======================= */
+    .navbar.scrolled {
+        background: var(--background-blur);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 1rem 0;
+    }
+</style>
+
+<script>
+ const navbar = document.getElementById("navbar");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const openBtn = document.getElementById("mobile-btn");
+    const closeBtn = document.getElementById("close-mobile");
+
+    // Scroll effect
+    window.addEventListener("scroll", () => {
+        if (!document.body.classList.contains("menu-open")) {
+            if (window.scrollY > 50) {
+                navbar?.classList.add("scrolled");
+            } else {
+                navbar?.classList.remove("scrolled");
+            }
+        }
+    });
+
+    // Mobile menu open
+    openBtn?.addEventListener("click", () => {
+        if (mobileMenu) {
+            document.body.classList.add("menu-open");   // <-- NUEVO
+            mobileMenu.style.transform = "translateX(0)";
+        }
+    });
+
+    // Mobile menu close
+    closeBtn?.addEventListener("click", () => {
+        if (mobileMenu) {
+            mobileMenu.style.transform = "translateX(100%)";
+            document.body.classList.remove("menu-open");  // <-- NUEVO
+        }
+    });
+</script>

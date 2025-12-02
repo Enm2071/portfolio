@@ -1,0 +1,377 @@
+---
+import profileImage from "@assets/stock_images/professional_softwar_8750beb0.jpg";
+import { ArrowRight, Download } from "lucide-astro";
+---
+
+<section id="about" class="hero">
+  <!-- Background Blobs -->
+  <div class="hero-bg">
+    <div class="blob blob-right"></div>
+    <div class="blob blob-left"></div>
+  </div>
+
+  <div class="hero-container">
+    <div class="hero-grid">
+      
+      <!-- ============================
+           LEFT SIDE — TEXT
+      ============================ -->
+      <div class="hero-text animate-slide-in-left">
+        <h1 class="hero-title">
+          Hola, soy <span class="text-gradient">Ernesto Núñez</span>.<br />
+          Desarrollador Full Stack.
+        </h1>
+
+        <!-- Two-Column Professional Summary -->
+        <div class="hero-paragraphs">
+          <p>
+            Soy un desarrollador de software con más de 7 años de experiencia
+            transformando ideas complejas en soluciones digitales elegantes,
+            funcionales y orientadas al usuario. Mi especialidad es el desarrollo
+            frontend con tecnologías como ReactJS, Next.js, React Native,
+            TypeScript y JavaScript, lo que me permite crear interfaces modernas,
+            escalables y de alto rendimiento. A nivel backend, cuento con
+            experiencia intermedia en Node.js, .NET y Python, además de integrar
+            servicios y arquitecturas basadas en AWS.
+          </p>
+
+          <p>
+            Mi trabajo se fundamenta en buenas prácticas, patrones de diseño,
+            APIs eficientes y estrategias de pruebas robustas que garantizan calidad
+            y confiabilidad en cada proyecto. Me caracterizo por combinar autonomía
+            técnica con una colaboración efectiva en equipos multidisciplinarios,
+            siempre enfocado en construir productos que generen impacto real y
+            resultados sostenibles.
+          </p>
+        </div>
+
+        <div class="hero-buttons">
+          <a class="btn-primary" href="#projects">
+            Ver Proyectos <ArrowRight class="icon-sm" />
+          </a>
+
+          <a
+            href="/assets/Ernesto_Nuñez_Marrero_-_Full_Stack_Senior_Developer.pdf"
+            download="Ernesto_Nuñez_Marrero_CV.pdf"
+            class="btn-outline"
+          >
+            Descargar CV <Download class="icon-sm" />
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <p class="stat-number">7+</p>
+            <p class="stat-label">Años de Exp.</p>
+          </div>
+          <div>
+            <p class="stat-number">50+</p>
+            <p class="stat-label">Proyectos</p>
+          </div>
+          <div>
+            <p class="stat-number">100%</p>
+            <p class="stat-label">Compromiso</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================
+           RIGHT SIDE — IMAGE
+      ============================ -->
+      <div class="hero-image animate-fade-in">
+        <div class="image-frame">
+          <div class="img-overlay"></div>
+
+          <!-- Imagen real (descomentar si la quieres visible) -->
+          <!-- <img src={profileImage} alt="Profile" class="real-image" /> -->
+
+          <div class="floating-badge">
+            <p class="badge-label">Status actual</p>
+            <p class="badge-text">Construyendo la próxima generación de apps web</p>
+          </div>
+        </div>
+
+        <div class="image-bg"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ============================
+        VARIABLES 
+  ============================ */
+  :root {
+    --primary: #3b82f6;
+    --purple: #a855f7;
+    --pink: #ec4899;
+    --foreground: #f8fafc;
+    --muted: #9ca3af;
+    --background: #111418;
+    --background-soft: rgba(17, 20, 24, 0.7);
+    --border: rgba(255, 255, 255, 0.1);
+  }
+
+  /* ============================
+        HERO BASE
+  ============================ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 5rem;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--background);
+  }
+
+  .hero-container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-grid {
+    display: grid;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+  }
+
+  /* ============================
+        BACKGROUND BLOBS
+  ============================ */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+  }
+
+  .blob-right {
+    top: 0;
+    right: 0;
+    width: 600px;
+    height: 600px;
+    background: var(--primary);
+    transform: translate(35%, -25%);
+  }
+
+  .blob-left {
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: 500px;
+    background: var(--purple);
+    transform: translate(-30%, 25%);
+  }
+
+  /* ============================
+        TEXT AREA
+  ============================ */
+  .hero-text {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 4.5rem;
+    }
+  }
+
+  /* ============================
+        TWO-COLUMN PARAGRAPHS
+  ============================ */
+  .hero-paragraphs {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-paragraphs {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .hero-paragraphs p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ============================
+        BUTTONS
+  ============================ */
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 0.9rem 1.5rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    box-shadow: 0px 5px 20px rgba(59, 130, 246, 0.4);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .btn-outline {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.9rem 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .icon-sm {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ============================
+        STATS
+  ============================ */
+  .hero-stats {
+    margin-top: 3rem;
+    display: flex;
+    gap: 2.5rem;
+    color: var(--muted);
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    color: var(--foreground);
+    font-weight: 700;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+  }
+
+  /* ============================
+        IMAGE FRAME
+  ============================ */
+  .hero-image { opacity: 0; transform: scale(0.95); }
+
+  .image-frame {
+    position: relative;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    aspect-ratio: 4/5;
+    max-width: 22rem;
+    margin: 0 auto;
+  }
+
+  .img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--background-soft), transparent);
+    z-index: 10;
+  }
+
+  .floating-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    padding: 1rem;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(8px);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    z-index: 20;
+  }
+
+  .badge-label {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .badge-text {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .image-bg {
+    position: absolute;
+    inset: -1rem;
+    background: linear-gradient(45deg, var(--primary), var(--purple));
+    opacity: 0.5;
+    filter: blur(40px);
+    border-radius: 1.5rem;
+    z-index: -10;
+  }
+
+  /* ============================
+        ANIMATIONS
+  ============================ */
+  @keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out 0.2s forwards;
+  }
+
+  /* ============================
+        GRADIENT TEXT
+  ============================ */
+  .text-gradient {
+    background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+</style>
