@@ -1,0 +1,5 @@
+{
+  "routes": [
+    { "src": "/.*", "middlewarePath": "src/middleware/index.js" }
+  ]
+}
