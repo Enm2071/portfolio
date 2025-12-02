@@ -1,25 +1,32 @@
 ---
 import { ExternalLink, Github } from "lucide-astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const projects = [
   {
-    title: "E-Commerce Dashboard",
-    description: "Panel de análisis completo para minoristas online con visualización de datos en tiempo real.",
+    title: t("project_1_title"),
+    description: t("project_1_description"),
     tags: ["React", "Recharts", "Tailwind", "Node.js"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "AI Content Generator",
-    description: "Aplicación SaaS que utiliza la API de OpenAI para ayudar a crear textos de marketing en segundos.",
+    title: t("project_2_title"),
+    description: t("project_2_description"),
     tags: ["Next.js", "OpenAI API", "Stripe", "TypeScript"],
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Task Management App",
-    description: "Herramienta de gestión de proyectos colaborativa con tableros kanban y chat de equipo.",
+    title: t("project_3_title"),
+    description: t("project_3_description"),
     tags: ["Vue.js", "Firebase", "Pinia", "Sass"],
-    image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=800&q=80"
-  }
+    image:
+      "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=800&q=80",
+  },
 ];
 ---
 
@@ -29,11 +36,10 @@ const projects = [
     <!-- Header -->
     <div class="projects-header">
       <div>
-        <h2 class="projects-title">
-          Proyectos <span class="primary">Destacados</span>
-        </h2>
+        <h2 class="projects-title" set:html={t("projects_title")}></h2>
+
         <p class="projects-subtitle">
-          Una selección de mi trabajo reciente, desde aplicaciones web hasta sistemas de diseño.
+          {t("projects_subtitle")}
         </p>
       </div>
 
@@ -42,7 +48,7 @@ const projects = [
         target="_blank"
         class="github-button"
       >
-        <Github class="icon-sm" /> Ver en GitHub
+        <Github class="icon-sm" /> {t("projects_github_button")}
       </a>
     </div>
 
@@ -244,7 +250,6 @@ const projects = [
     transform: scale(1.1);
   }
 
-  /* Image hover overlay */
   .image-hover {
     position: absolute;
     inset: 0;
@@ -311,9 +316,6 @@ const projects = [
     flex-grow: 1;
   }
 
-  /* ======================================================
-        TAGS
-  ====================================================== */
   .tags {
     display: flex;
     flex-wrap: wrap;

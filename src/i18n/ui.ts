@@ -13,7 +13,7 @@ export const ui = {
         ABOUT / HERO
     ============================ */
     about_title: 'Hola, soy <span class="text-gradient">Ernesto Núñez</span>.<br/>Desarrollador Full Stack.',
-    
+
     about_paragraph1:
       "Soy un desarrollador de software con más de 7 años de experiencia transformando ideas complejas en soluciones digitales elegantes, funcionales y orientadas al usuario. Mi especialidad es el desarrollo frontend con tecnologías como ReactJS, Next.js, React Native, TypeScript y JavaScript, lo que me permite crear interfaces modernas, escalables y de alto rendimiento. A nivel backend, cuento con experiencia intermedia en Node.js, .NET y Python, además de integrar servicios y arquitecturas basadas en AWS.",
 
@@ -68,6 +68,28 @@ export const ui = {
     nav_skills: "Habilidades",
     nav_projects: "Proyectos",
     nav_contact: "Contactar",
+
+
+    /* ============================
+        PROJECTS
+    ============================ */
+
+    projects_title: "Proyectos <span class=\"primary\">Destacados</span>",
+    projects_subtitle:
+      "Una selección de mi trabajo reciente, desde aplicaciones web hasta sistemas de diseño.",
+    projects_github_button: "Ver en GitHub",
+
+    project_1_title: "E-Commerce Dashboard",
+    project_1_description:
+      "Panel de análisis completo para minoristas online con visualización de datos en tiempo real.",
+
+    project_2_title: "AI Content Generator",
+    project_2_description:
+      "Aplicación SaaS que utiliza la API de OpenAI para ayudar a crear textos de marketing en segundos.",
+
+    project_3_title: "Task Management App",
+    project_3_description:
+      "Herramienta de gestión de proyectos colaborativa con tableros kanban y chat de equipo.",
   },
 
   en: {
@@ -75,7 +97,7 @@ export const ui = {
         ABOUT / HERO
     ============================ */
     about_title: 'Hi, I\'m <span class="text-gradient">Ernesto Núñez</span>.<br/>Full Stack Developer.',
-    
+
     about_paragraph1:
       "I am a software developer with over 7 years of experience transforming complex ideas into elegant, functional, and user-centered digital solutions. My specialization is frontend development with technologies such as ReactJS, Next.js, React Native, TypeScript, and JavaScript, enabling me to build modern, scalable, and high-performance interfaces. On the backend side, I have intermediate experience with Node.js, .NET, and Python, as well as integrating cloud-based architectures using AWS.",
 
@@ -130,5 +152,26 @@ export const ui = {
     nav_skills: "Skills",
     nav_projects: "Projects",
     nav_contact: "Contact",
+
+
+    /* ============================
+        PROJECTS
+    ============================ */
+
+    projects_title: "Featured <span class=\"primary\">Projects</span>",
+    projects_subtitle:
+      "A selection of my recent work, ranging from web applications to design systems.",
+    projects_github_button: "View on GitHub",
+
+    project_1_title: "E-Commerce Dashboard",
+    project_1_description:
+      "A complete analytics dashboard for online retailers with real-time data visualization.",
+
+    project_2_title: "AI Content Generator",
+    project_2_description:
+      "A SaaS application using the OpenAI API to help create marketing text in seconds.",
+
+    project_3_title: "Task Management App",
+    project_3_description: "A collaborative project management tool featuring kanban boards and team chat.",
   },
 } as const;
