@@ -5,6 +5,8 @@ export const languages = {
   en: "English",
 };
 
+export const supportedLangs = Object.keys(languages);
+
 export const defaultLang = "es";
 
 export const ui = {
