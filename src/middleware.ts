@@ -8,7 +8,6 @@ export const onRequest = defineMiddleware(({ request, redirect, url }, next) => 
   // Detect current language from URL
   const currentLang = pathname.split("/")[1];
 
-  window.localStorage.setItem("lang", currentLang);
   if (supportedLangs.includes(currentLang)) {
     return next();
   }

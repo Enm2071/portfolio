@@ -4,7 +4,7 @@ import vercel from '@astrojs/vercel/serverless';
  
 export default defineConfig({
   // Also can be 'static' or 'hybrid'
-  output: 'server',
+  output: 'static',
   base: '/en',
   adapter: vercel({
     webAnalytics: {
