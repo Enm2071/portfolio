@@ -22,7 +22,7 @@ export const ui = {
     about_paragraph2:
       "Mi trabajo se fundamenta en buenas prácticas, patrones de diseño, APIs eficientes y estrategias de pruebas robustas que garantizan calidad y confiabilidad en cada proyecto. Me caracterizo por combinar autonomía técnica con una colaboración efectiva en equipos multidisciplinarios, siempre enfocado en construir productos que generen impacto real y resultados sostenibles.",
 
-    about_viewProjects: "Ver Proyectos",
+    about_viewProjects: "Ir a LinkedIn",
     about_downloadCV: "Descargar CV",
 
     about_yearsExp: "Años de Exp.",
@@ -79,7 +79,7 @@ export const ui = {
     projects_title: "Proyectos <span class=\"primary\">Destacados</span>",
     projects_subtitle:
       "Una selección de mi trabajo reciente, desde aplicaciones web hasta sistemas de diseño.",
-    projects_github_button: "Ver en GitHub",
+    projects_github_button: "Ver cuenta de GitHub",
 
     project_1_title: "E-Commerce Dashboard",
     project_1_description:
@@ -120,7 +120,7 @@ export const ui = {
     about_paragraph2:
       "My work is grounded in best practices, design patterns, efficient APIs, and robust testing strategies that guarantee reliability and high-quality results. I combine strong technical autonomy with effective collaboration across multidisciplinary teams, always focused on delivering impactful and sustainable solutions.",
 
-    about_viewProjects: "View Projects",
+    about_viewProjects: "Go to LinkedIn",
     about_downloadCV: "Download CV",
 
     about_yearsExp: "Years of Exp.",
@@ -177,7 +177,7 @@ export const ui = {
     projects_title: "Featured <span class=\"primary\">Projects</span>",
     projects_subtitle:
       "A selection of my recent work, ranging from web applications to design systems.",
-    projects_github_button: "View on GitHub",
+    projects_github_button: "View GitHub Account",
 
     project_1_title: "E-Commerce Dashboard",
     project_1_description:
