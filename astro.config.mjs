@@ -1,12 +1,8 @@
-// @ts-check
-import { defineConfig } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
-import vercel from "@astrojs/vercel";
-
+import { defineConfig } from 'astro/config';
+// Import /serverless for a Serverless SSR site
+import vercelServerless from '@astrojs/vercel/serverless';
+ 
 export default defineConfig({
-  output: "server",
-  adapter: vercel(),
-  vite: {
-    plugins: [tailwindcss()],
-  },
+  output: 'server',
+  adapter: vercelServerless(),
 });
