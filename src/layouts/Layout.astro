@@ -1,29 +1,5 @@
 ---
 import "../styles/global.css";
-
-import { defineMiddleware } from 'astro:middleware';
-
-export const onRequest = defineMiddleware(({ request, redirect }) => {
-  const supportedLangs = ['en', 'es'];
-  const defaultLang = 'en';
-
-  const url = new URL(request.url);
-  const pathname = url.pathname;
-
-  const currentLang = pathname.split("/")[1];
-  if (supportedLangs.includes(currentLang)) {
-	return new Response(null, { status: 200 });
-  }
-
-  const browserLang = request.headers
-	.get("accept-language")
-	?.split(",")[0]
-	?.slice(0, 2) ?? defaultLang;
-
-  const lang = supportedLangs.includes(browserLang) ? browserLang : defaultLang;
-
-  return redirect(`/${lang}`);
-});
 ---
 <!doctype html>
 <html lang="en">
