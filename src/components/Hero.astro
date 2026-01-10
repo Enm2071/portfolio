@@ -1,5 +1,5 @@
 ---
-import profileImage from "@assets/stock_images/professional_softwar_8750beb0.jpg";
+import profileImage from "../assets/images/enm.jpeg";
 import { ArrowRight, Download } from "lucide-astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
@@ -67,7 +67,7 @@ const t = useTranslations(lang);
           <div class="img-overlay"></div>
 
           <!-- Imagen real (descomentar si la quieres visible) -->
-          <!-- <img src={profileImage} alt="Profile" class="real-image" /> -->
+          <img src={profileImage.src} alt="Profile" class="real-image centered-image" />
 
           <div class="floating-badge">
             <p class="badge-label">{t("about_currentStatus")}</p>
@@ -358,5 +358,22 @@ const t = useTranslations(lang);
     background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
     -webkit-background-clip: text;
     color: transparent;
+  }
+
+  /* Real image inside frame */
+  .real-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Center the image horizontally within the frame */
+  .centered-image {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    left: 0;
+    right: 0;
   }
 </style>
