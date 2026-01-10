@@ -15,6 +15,9 @@ export const ui = {
         ABOUT / HERO
     ============================ */
     about_title: 'Hola, soy <span class="text-gradient">Ernesto Núñez</span>.<br/>Desarrollador Full Stack.',
+    /* Short hero snippet and CTA */
+    about_snippet: "Desarrollador Full Stack centrado en interfaces modernas y soluciones escalables...",
+    about_readMore: "Saber más sobre mí",
 
     about_paragraph1:
       "Soy un desarrollador de software con más de 7 años de experiencia transformando ideas complejas en soluciones digitales elegantes, funcionales y orientadas al usuario. Mi especialidad es el desarrollo frontend con tecnologías como ReactJS, Next.js, React Native, TypeScript y JavaScript, lo que me permite crear interfaces modernas, escalables y de alto rendimiento. A nivel backend, cuento con experiencia intermedia en Node.js, .NET y Python, además de integrar servicios y arquitecturas basadas en AWS.",
@@ -137,6 +140,9 @@ export const ui = {
         ABOUT / HERO
     ============================ */
     about_title: 'Hi, I\'m <span class="text-gradient">Ernesto Núñez</span>.<br/>Full Stack Developer.',
+    /* Short hero snippet and CTA */
+    about_snippet: "Full Stack developer focused on modern interfaces and scalable solutions...",
+    about_readMore: "Learn more about me",
 
     about_paragraph1:
       "I am a software developer with over 7 years of experience transforming complex ideas into elegant, functional, and user-centered digital solutions. My specialization is frontend development with technologies such as ReactJS, Next.js, React Native, TypeScript, and JavaScript, enabling me to build modern, scalable, and high-performance interfaces. On the backend side, I have intermediate experience with Node.js, .NET, and Python, as well as integrating cloud-based architectures using AWS.",
