@@ -101,20 +101,6 @@ const t = useTranslations(lang);
 
 <style>
   /* ============================
-        VARIABLES 
-  ============================ */
-  :root {
-    --primary: #3b82f6;
-    --purple: #a855f7;
-    --pink: #ec4899;
-    --foreground: #f8fafc;
-    --muted: #9ca3af;
-    --background: #111418;
-    --background-soft: rgba(17, 20, 24, 0.7);
-    --border: rgba(255, 255, 255, 0.1);
-  }
-
-  /* ============================
         HERO BASE
   ============================ */
   .hero {
@@ -124,7 +110,7 @@ const t = useTranslations(lang);
     display: flex;
     align-items: center;
     overflow: hidden;
-    background: var(--background);
+    background: hsl(var(--background));
   }
 
   .hero-container {
@@ -170,7 +156,7 @@ const t = useTranslations(lang);
     right: 0;
     width: 600px;
     height: 600px;
-    background: var(--primary);
+    background: hsl(var(--primary));
     transform: translate(35%, -25%);
   }
 
@@ -179,7 +165,7 @@ const t = useTranslations(lang);
     left: 0;
     width: 500px;
     height: 500px;
-    background: var(--purple);
+    background: hsl(var(--purple));
     transform: translate(-30%, 25%);
   }
 
@@ -209,7 +195,7 @@ const t = useTranslations(lang);
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
   }
 
   @media (min-width: 768px) {
@@ -230,25 +216,25 @@ const t = useTranslations(lang);
   }
 
   .btn-primary {
-    background: var(--primary);
-    color: white;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
     padding: 0.9rem 1.5rem;
     border-radius: 0.75rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     border: none;
-    box-shadow: 0px 5px 20px rgba(59, 130, 246, 0.4);
+    box-shadow: 0px 5px 20px hsl(var(--primary) / 0.35);
     cursor: pointer;
     text-decoration: none;
   }
 
   .btn-outline {
-    background: rgba(255, 255, 255, 0.08);
+    background: hsl(var(--card) / 0.35);
     padding: 0.9rem 1.5rem;
     border-radius: 0.75rem;
-    border: 1px solid var(--border);
-    color: var(--foreground);
+    border: 1px solid hsl(var(--border) / 0.7);
+    color: hsl(var(--foreground));
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -281,13 +267,13 @@ const t = useTranslations(lang);
   .btn-readmore .icon-right {
     width: 16px;
     height: 16px;
-    color: var(--primary);
+    color: hsl(var(--primary));
     flex: 0 0 auto;
   }
 
   .btn-readmore .readmore-label {
     font-weight: 600;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
     display: inline-block;
   }
 
@@ -310,14 +296,14 @@ const t = useTranslations(lang);
     margin-top: 3rem;
     display: flex;
     gap: 2.5rem;
-    color: var(--muted);
+    color: hsl(var(--muted-foreground));
   }
 
   .stat-number {
     font-family: var(--font-display);
     letter-spacing: 0.02em;
     font-size: 2rem;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
     font-weight: 700;
   }
 
@@ -338,7 +324,7 @@ const t = useTranslations(lang);
     position: relative;
     border-radius: 1.25rem;
     overflow: hidden;
-    border: 1px solid var(--border);
+    border: 1px solid hsl(var(--border) / 0.7);
     aspect-ratio: 4/5;
     max-width: 22rem;
     margin: 0 auto;
@@ -347,7 +333,7 @@ const t = useTranslations(lang);
   .img-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, var(--background-soft), transparent);
+    background: linear-gradient(to top, hsl(var(--background) / 0.7), transparent);
     z-index: 10;
   }
 
@@ -360,14 +346,14 @@ const t = useTranslations(lang);
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(8px);
     border-radius: 0.75rem;
-    border: 1px solid var(--border);
+    border: 1px solid hsl(var(--border) / 0.7);
     z-index: 20;
   }
 
   .badge-label {
     font-family: monospace;
     font-size: 0.75rem;
-    color: var(--primary);
+    color: hsl(var(--primary));
     margin-bottom: 0.25rem;
   }
 
@@ -380,7 +366,7 @@ const t = useTranslations(lang);
   .image-bg {
     position: absolute;
     inset: -1rem;
-    background: linear-gradient(45deg, var(--primary), var(--purple));
+    background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--purple)));
     opacity: 0.5;
     filter: blur(40px);
     border-radius: 1.5rem;

@@ -55,14 +55,7 @@ const contactHref = `/${lang}/#contact`;
     /* =======================
      VARIABLES
   ======================= */
-    :root {
-        --primary: #3b82f6;
-        --foreground: #f8fafc;
-        --muted-foreground: #a3a3a3;
-        --background: rgba(17, 20, 24, 1);
-        --background-blur: rgba(17, 20, 24, 0.8);
-        --card: rgba(255, 255, 255, 0.05);
-    }
+    /* Removed global :root overrides */
 
     /* =======================
      NAVBAR BASE
@@ -116,11 +109,11 @@ const contactHref = `/${lang}/#contact`;
     .icon-primary {
         width: 32px;
         height: 32px;
-        color: var(--primary);
+        color: hsl(var(--primary));
     }
 
     .logo-text .primary {
-        color: var(--primary);
+        color: hsl(var(--primary));
     }
 
     /* =======================
@@ -139,7 +132,7 @@ const contactHref = `/${lang}/#contact`;
     }
 
     .nav-link {
-        color: var(--muted-foreground);
+        color: hsl(var(--muted-foreground));
         font-size: 0.875rem;
         font-weight: 500;
         text-decoration: none;
@@ -147,11 +140,11 @@ const contactHref = `/${lang}/#contact`;
     }
 
     .nav-link:hover {
-        color: var(--primary);
+        color: hsl(var(--primary));
     }
 
     .btn-primary {
-        background: var(--primary);
+        background: hsl(var(--primary));
         color: white;
         border: none;
         padding: 0.6rem 1.2rem;
@@ -159,7 +152,7 @@ const contactHref = `/${lang}/#contact`;
         font-size: 0.875rem;
         font-weight: 600;
         cursor: pointer;
-        box-shadow: 0px 3px 10px rgba(59, 130, 246, 0.4);
+        box-shadow: 0px 3px 10px hsl(var(--primary) / 0.35);
         text-decoration: none;
     }
 
@@ -196,7 +189,7 @@ const contactHref = `/${lang}/#contact`;
     .menu-icon {
         width: 24px;
         height: 24px;
-        color: white;
+        color: hsl(var(--foreground));
     }
 
     /* =======================
@@ -208,7 +201,7 @@ const contactHref = `/${lang}/#contact`;
         right: 0;
         width: 260px;
         height: 100%;
-        background: var(--background-blur);
+        background: hsl(var(--background) / 0.8);
         backdrop-filter: blur(20px);
         padding: 1.5rem;
         display: flex;
@@ -224,27 +217,27 @@ const contactHref = `/${lang}/#contact`;
         background: none;
         border: none;
         font-size: 2rem;
-        color: white;
+        color: hsl(var(--foreground));
         cursor: pointer;
     }
 
     .mobile-link {
         font-size: 1.125rem;
-        color: white;
+        color: hsl(var(--foreground));
         text-decoration: none;
         font-weight: 500;
         transition: color 0.2s ease;
     }
 
     .mobile-link:hover {
-        color: var(--primary);
+        color: hsl(var(--primary));
     }
 
     /* =======================
      SCROLL EFFECT
   ======================= */
     .navbar.scrolled {
-        background: var(--background-blur);
+        background: hsl(var(--background) / 0.8);
         backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         padding: 1rem 0;

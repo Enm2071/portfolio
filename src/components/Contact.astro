@@ -93,26 +93,13 @@ const t = useTranslations(lang);
 
 <style>
   /* ============================================================
-     VARIABLES
-  ============================================================ */
-  :root {
-    --primary: #3b82f6;
-    --purple: #a855f7;
-    --foreground: #f8fafc;
-    --muted: #a3a3a3;
-    --background: #111418;
-    --background-soft: rgba(17, 20, 24, 0.4);
-    --border-light: rgba(255, 255, 255, 0.1);
-  }
-
-  /* ============================================================
      BASE
   ============================================================ */
   .contact-section {
     position: relative;
     padding: 6rem 0;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.03);
+    background: hsl(var(--card) / 0.12);
   }
 
   /* ============================================================
@@ -181,7 +168,7 @@ const t = useTranslations(lang);
     left: 0;
     width: 260px;
     height: 260px;
-    background: rgba(59, 130, 246, 0.15);
+    background: hsl(var(--primary) / 0.15);
     transform: translate(-50%, -50%);
   }
 
@@ -190,7 +177,7 @@ const t = useTranslations(lang);
     right: 0;
     width: 380px;
     height: 380px;
-    background: rgba(168, 85, 247, 0.15);
+    background: hsl(var(--purple) / 0.15);
     transform: translate(35%, 35%);
   }
 
@@ -220,11 +207,11 @@ const t = useTranslations(lang);
     font-size: 2.8rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
   }
 
   .contact-description {
-    color: var(--muted);
+    color: hsl(var(--muted-foreground));
     font-size: 1.2rem;
     margin-bottom: 2rem;
     line-height: 1.6;
@@ -246,11 +233,11 @@ const t = useTranslations(lang);
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-    background: rgba(59, 130, 246, 0.12);
+    background: hsl(var(--primary) / 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary);
+    color: hsl(var(--primary));
   }
 
   .icon-sm {
@@ -260,11 +247,11 @@ const t = useTranslations(lang);
 
   .info-label {
     font-size: 0.85rem;
-    color: var(--muted);
+    color: hsl(var(--muted-foreground));
   }
 
   .info-value {
-    color: var(--foreground);
+    color: hsl(var(--foreground));
     font-size: 1rem;
     font-weight: 500;
   }
@@ -273,10 +260,10 @@ const t = useTranslations(lang);
   }
 
   .form-card {
-    background: rgba(255, 255, 255, 0.05);
+    background: hsl(var(--card) / 0.35);
     backdrop-filter: blur(15px);
     border-radius: 1rem;
-    border: 1px solid var(--border-light);
+    border: 1px solid hsl(var(--border) / 0.7);
     padding: 0.5rem;
   }
 
@@ -308,28 +295,28 @@ const t = useTranslations(lang);
   label {
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
   }
 
   input,
   textarea {
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid var(--border-light);
+    background: hsl(var(--background) / 0.22);
+    border: 1px solid hsl(var(--border) / 0.7);
     padding: 0.65rem 0.75rem;
     border-radius: 0.5rem;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
     outline: none;
     transition: border 0.2s;
   }
 
   input:focus,
   textarea:focus {
-    border-color: var(--primary);
+    border-color: hsl(var(--primary));
   }
 
   .btn-submit {
     margin-top: 0.5rem;
-    background: var(--primary);
+    background: hsl(var(--primary));
     color: white;
     border: none;
     padding: 0.9rem;
@@ -345,7 +332,7 @@ const t = useTranslations(lang);
   }
 
   .btn-submit:hover {
-    background: #2563eb;
+    background: hsl(var(--primary) / 0.9);
   }
 
   .text-gradient {

@@ -165,19 +165,6 @@ const projects2 = [
 
 <style>
   /* ======================================================
-        VARIABLES
-  ====================================================== */
-  :root {
-    --primary: #3b82f6;
-    --purple: #a855f7;
-    --foreground: #f8fafc;
-    --muted: #a3a3a3;
-    --background: #111418;
-    --card-bg: rgba(255,255,255,0.05);
-    --border-light: rgba(255,255,255,0.1);
-  }
-
-  /* ======================================================
         SECTION BASE
   ====================================================== */
   .projects-section {
@@ -213,12 +200,12 @@ const projects2 = [
     letter-spacing: 0.03em;
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
     margin-bottom: 0.5rem;
   }
 
   .projects-title .primary {
-    color: var(--primary);
+    color: hsl(var(--primary));
   }
 
   @media (min-width: 768px) {
@@ -228,7 +215,7 @@ const projects2 = [
   }
 
   .projects-subtitle {
-    color: var(--muted);
+    color: hsl(var(--muted-foreground));
     max-width: 40rem;
     line-height: 1.6;
   }
@@ -237,12 +224,12 @@ const projects2 = [
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    border: 1px solid var(--border-light);
+    border: 1px solid hsl(var(--border) / 0.7);
     padding: 0.6rem 1rem;
     border-radius: 0.5rem;
     font-size: 0.9rem;
     text-decoration: none;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
     transition: background 0.2s ease;
   }
 
@@ -284,9 +271,9 @@ const projects2 = [
   }
 
   .card {
-    background: var(--card-bg);
+    background: hsl(var(--card) / 0.35);
     backdrop-filter: blur(12px);
-    border: 1px solid var(--border-light);
+    border: 1px solid hsl(var(--border) / 0.7);
     border-radius: 1rem;
     overflow: hidden;
     display: flex;
@@ -348,11 +335,11 @@ const projects2 = [
   }
 
   .primary-bg {
-    background: var(--primary);
+    background: hsl(var(--primary));
   }
 
   .primary-bg:hover {
-    background: #2563eb;
+    background: hsl(var(--primary) / 0.9);
   }
 
   .icon-md {
@@ -375,11 +362,11 @@ const projects2 = [
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
   }
 
   .card-description {
-    color: var(--muted);
+    color: hsl(var(--muted-foreground));
     margin-bottom: 1.25rem;
     line-height: 1.5;
     flex-grow: 1;
@@ -395,9 +382,9 @@ const projects2 = [
     padding: 0.35rem 0.75rem;
     font-size: 0.75rem;
     background: rgba(255,255,255,0.07);
-    border: 1px solid var(--border-light);
+    border: 1px solid hsl(var(--border) / 0.7);
     border-radius: 999px;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
   }
 
   /* ======================================================
