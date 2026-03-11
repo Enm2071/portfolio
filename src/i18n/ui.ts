@@ -237,7 +237,7 @@ export const ui = {
     ============================ */
     about_page_hero_title: "ABOUT\nME.",
     about_page_hero_subtitle:
-      "I am a Full Stack Developer driven by the intersection of retro aesthetics and modern performance.",
+      "Senior Full-Stack Developer with 8+ years delivering high-performance, user-centric applications across web, mobile, and desktop. Expert in React, Next.js, and TypeScript; adept with Node.js and Python, designing scalable APIs and cloud-native architectures (AWS Amplify, Cognito, Lambda, GraphQL). Led payment platforms and fraud-resistant integrations (3DS, PayPal, Nexio, Kount, WorldPay) and migrated REST services to GraphQL to accelerate response times and streamline data access. Known for rigorous testing (Jest, pytest), clean architecture, and cross-functional collaboration to ship secure, scalable solutions aligned with business goals.",
     about_page_based_in_label: "BASED IN",
     about_page_based_in_value: "Santo Domingo, Dominican Republic",
 

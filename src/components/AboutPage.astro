@@ -17,6 +17,12 @@ const contactHref = `/${lang}/#contact`;
 ---
 
 <div class="about">
+	<!-- Background blobs (match landing) -->
+	<div class="hero-bg" aria-hidden="true">
+		<div class="blob blob-right"></div>
+		<div class="blob blob-left"></div>
+	</div>
+
 	<section class="hero">
 		<div class="container">
 			<div class="hero-grid">
@@ -187,35 +193,56 @@ const contactHref = `/${lang}/#contact`;
 
 <style>
 	.about {
-		padding-top: 6.5rem;
+		position: relative;
+		overflow: hidden;
 	}
 
 	.container {
 		max-width: 1240px;
 		margin: 0 auto;
 		padding: 0 1rem;
+		position: relative;
+		z-index: 10;
 	}
 
 	.hero {
 		position: relative;
-		padding: 2rem 0 1.5rem;
+		min-height: 100vh;
+		padding-top: 5rem;
+		display: flex;
+		align-items: center;
 	}
 
-	.hero::before {
-		content: "";
+	.hero-bg {
 		position: absolute;
-		inset: -1px 0 0;
-		background-image:
-			linear-gradient(to bottom, hsl(var(--border) / 0.35), transparent 22%),
-			repeating-linear-gradient(
-				to right,
-				hsl(var(--border) / 0.22),
-				hsl(var(--border) / 0.22) 1px,
-				transparent 1px,
-				transparent 42px
-			);
-		opacity: 0.35;
+		inset: 0;
+		z-index: 0;
 		pointer-events: none;
+	}
+
+	.blob {
+		position: absolute;
+		border-radius: 999px;
+		filter: blur(80px);
+		opacity: 0.15;
+	}
+
+	.blob-right {
+		top: 0;
+		right: 0;
+		width: 600px;
+		height: 600px;
+		background: hsl(var(--primary));
+		transform: translate(35%, -25%);
+	}
+
+	.blob-left {
+		bottom: 0;
+		left: 0;
+		width: 500px;
+		height: 500px;
+		background: hsl(var(--purple));
+		transform: translate(-30%, 25%);
 	}
 
 	.hero-grid {
