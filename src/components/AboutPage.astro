@@ -1,0 +1,609 @@
+---
+import profileImage from "../assets/images/enm.jpeg";
+import {
+	Camera,
+	Code,
+	Gamepad2,
+	Terminal,
+	Waves,
+} from "lucide-astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const homeHref = `/${lang}/`;
+const contactHref = `/${lang}/#contact`;
+---
+
+<div class="about">
+	<section class="hero">
+		<div class="container">
+			<div class="hero-grid">
+				<div class="hero-left">
+					<h1 class="hero-title font-display">{t("about_page_hero_title")}</h1>
+					<p class="hero-subtitle">{t("about_page_hero_subtitle")}</p>
+				</div>
+
+				<div class="hero-right">
+					<div class="hero-card glass-card radius-lg">
+						<img
+							src={profileImage.src}
+							alt="Profile"
+							class="hero-img"
+							loading="eager"
+						/>
+
+						<div class="hero-badge glass-card radius-md">
+							<p class="badge-label">{t("about_page_based_in_label")}</p>
+							<p class="badge-value">{t("about_page_based_in_value")}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-head">
+				<h2 class="section-title font-display">{t("about_page_journey_title")}</h2>
+				<div class="section-line" aria-hidden="true" />
+			</div>
+
+			<div class="journey-grid">
+				<article class="journey-card glass-card radius-lg">
+					<p class="journey-number font-display">01</p>
+					<h3 class="journey-title">{t("about_page_journey_1_title")}</h3>
+					<p class="journey-desc">{t("about_page_journey_1_description")}</p>
+					<ul class="journey-tags">
+						<li>{t("about_page_journey_1_tag_1")}</li>
+						<li>{t("about_page_journey_1_tag_2")}</li>
+						<li>{t("about_page_journey_1_tag_3")}</li>
+					</ul>
+				</article>
+
+				<article class="journey-card glass-card radius-lg">
+					<p class="journey-number font-display">02</p>
+					<h3 class="journey-title">{t("about_page_journey_2_title")}</h3>
+					<p class="journey-desc">{t("about_page_journey_2_description")}</p>
+					<ul class="journey-tags">
+						<li>{t("about_page_journey_2_tag_1")}</li>
+						<li>{t("about_page_journey_2_tag_2")}</li>
+						<li>{t("about_page_journey_2_tag_3")}</li>
+					</ul>
+				</article>
+
+				<article class="journey-card glass-card radius-lg">
+					<p class="journey-number font-display">03</p>
+					<h3 class="journey-title">{t("about_page_journey_3_title")}</h3>
+					<p class="journey-desc">{t("about_page_journey_3_description")}</p>
+					<ul class="journey-tags">
+						<li>{t("about_page_journey_3_tag_1")}</li>
+						<li>{t("about_page_journey_3_tag_2")}</li>
+						<li>{t("about_page_journey_3_tag_3")}</li>
+					</ul>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="philo-grid">
+				<div class="philo-left">
+					<h2 class="section-title font-display">
+						{t("about_page_philosophy_title")}
+					</h2>
+					<p class="philo-desc">{t("about_page_philosophy_description")}</p>
+
+					<div class="method-grid">
+						<div class="method-card glass-card radius-lg">
+							<div class="method-icon" aria-hidden="true">
+								<Waves class="method-svg" />
+							</div>
+							<div>
+								<p class="method-title">{t("about_page_method_1_title")}</p>
+								<p class="method-text">{t("about_page_method_1_description")}</p>
+							</div>
+						</div>
+
+						<div class="method-card glass-card radius-lg">
+							<div class="method-icon" aria-hidden="true">
+								<Code class="method-svg" />
+							</div>
+							<div>
+								<p class="method-title">{t("about_page_method_2_title")}</p>
+								<p class="method-text">{t("about_page_method_2_description")}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="philo-right">
+					<div class="core-card glass-card radius-lg">
+						<div class="core-visual" aria-hidden="true" />
+						<div class="core-foot">
+							<p class="core-title font-display">
+								{t("about_page_core_methodology_title")}
+							</p>
+							<div class="core-badges">
+								<span class="core-badge">{t("about_page_core_badge_1")}</span>
+								<span class="core-badge">{t("about_page_core_badge_2")}</span>
+								<span class="core-badge">{t("about_page_core_badge_3")}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="section-head">
+				<h2 class="section-title font-display">{t("about_page_interests_title")}</h2>
+				<div class="section-line" aria-hidden="true" />
+			</div>
+
+			<div class="interests-grid">
+				<div class="interest-card glass-card radius-lg">
+					<Gamepad2 class="interest-icon" aria-hidden="true" />
+					<p class="interest-label">{t("about_page_interest_1")}</p>
+				</div>
+				<div class="interest-card glass-card radius-lg">
+					<Code class="interest-icon" aria-hidden="true" />
+					<p class="interest-label">{t("about_page_interest_2")}</p>
+				</div>
+				<div class="interest-card glass-card radius-lg">
+					<Waves class="interest-icon" aria-hidden="true" />
+					<p class="interest-label">{t("about_page_interest_3")}</p>
+				</div>
+				<div class="interest-card glass-card radius-lg">
+					<Camera class="interest-icon" aria-hidden="true" />
+					<p class="interest-label">{t("about_page_interest_4")}</p>
+				</div>
+				<div class="interest-card glass-card radius-lg">
+					<Terminal class="interest-icon" aria-hidden="true" />
+					<p class="interest-label">{t("about_page_interest_5")}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="cta">
+		<div class="container">
+			<div class="cta-card glass-card radius-lg">
+				<div class="cta-stars" aria-hidden="true" />
+				<h2 class="cta-title font-display">{t("about_page_cta_title")}</h2>
+				<div class="cta-actions">
+					<a class="btn-primary" href={contactHref}>{t("about_page_cta_get_in_touch")}</a>
+					<a class="btn-outline" href={homeHref}>{t("about_page_cta_back_home")}</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<style>
+	.about {
+		padding-top: 6.5rem;
+	}
+
+	.container {
+		max-width: 1240px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	.hero {
+		position: relative;
+		padding: 2rem 0 1.5rem;
+	}
+
+	.hero::before {
+		content: "";
+		position: absolute;
+		inset: -1px 0 0;
+		background-image:
+			linear-gradient(to bottom, hsl(var(--border) / 0.35), transparent 22%),
+			repeating-linear-gradient(
+				to right,
+				hsl(var(--border) / 0.22),
+				hsl(var(--border) / 0.22) 1px,
+				transparent 1px,
+				transparent 42px
+			);
+		opacity: 0.35;
+		pointer-events: none;
+	}
+
+	.hero-grid {
+		display: grid;
+		gap: 2.5rem;
+		align-items: center;
+	}
+
+	@media (min-width: 1024px) {
+		.hero-grid {
+			grid-template-columns: 1.2fr 0.8fr;
+			gap: 3.5rem;
+		}
+	}
+
+	.hero-title {
+		white-space: pre-line;
+		font-size: 3.2rem;
+		line-height: 1.05;
+		margin: 0 0 1.25rem;
+		color: hsl(var(--foreground));
+	}
+
+	@media (min-width: 768px) {
+		.hero-title {
+			font-size: 4.6rem;
+		}
+	}
+
+	.hero-subtitle {
+		max-width: 46ch;
+		margin: 0;
+		color: hsl(var(--muted-foreground));
+		font-size: 1rem;
+		line-height: 1.7;
+	}
+
+	.hero-card {
+		position: relative;
+		overflow: hidden;
+		border: 1px solid hsl(var(--border) / 0.7);
+	}
+
+	.hero-img {
+		display: block;
+		width: 100%;
+		height: 320px;
+		object-fit: cover;
+		filter: grayscale(0.15) contrast(1.05);
+	}
+
+	@media (min-width: 1024px) {
+		.hero-img {
+			height: 360px;
+		}
+	}
+
+	.hero-badge {
+		position: absolute;
+		left: 1rem;
+		right: 1rem;
+		bottom: 1rem;
+		padding: 0.9rem 1rem;
+		border: 1px solid hsl(var(--border) / 0.75);
+	}
+
+	.badge-label {
+		margin: 0;
+		font-size: 0.7rem;
+		letter-spacing: 0.1em;
+		color: hsl(var(--muted-foreground));
+	}
+
+	.badge-value {
+		margin: 0.35rem 0 0;
+		font-size: 0.95rem;
+		color: hsl(var(--foreground));
+		font-weight: 600;
+	}
+
+	.section {
+		padding: 3.25rem 0;
+	}
+
+	.section-head {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.section-title {
+		margin: 0;
+		font-size: 1.05rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: hsl(var(--foreground));
+	}
+
+	.section-line {
+		height: 1px;
+		flex: 1;
+		background: hsl(var(--border));
+		opacity: 0.8;
+	}
+
+	.journey-grid {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	@media (min-width: 1024px) {
+		.journey-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 1.5rem;
+		}
+	}
+
+	.journey-card {
+		padding: 1.5rem 1.4rem;
+		border: 1px solid hsl(var(--border) / 0.7);
+		min-height: 260px;
+	}
+
+	.journey-number {
+		margin: 0 0 0.75rem;
+		font-size: 0.9rem;
+		color: hsl(var(--muted-foreground));
+	}
+
+	.journey-title {
+		margin: 0 0 0.75rem;
+		font-size: 1.05rem;
+		color: hsl(var(--foreground));
+		font-weight: 700;
+	}
+
+	.journey-desc {
+		margin: 0 0 1.25rem;
+		color: hsl(var(--muted-foreground));
+		line-height: 1.7;
+		font-size: 0.95rem;
+	}
+
+	.journey-tags {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 0.35rem;
+		color: hsl(var(--muted-foreground));
+		font-size: 0.8rem;
+	}
+
+	.journey-tags li::before {
+		content: "+ ";
+		color: hsl(var(--primary));
+	}
+
+	.philo-grid {
+		display: grid;
+		gap: 1.75rem;
+		align-items: start;
+	}
+
+	@media (min-width: 1024px) {
+		.philo-grid {
+			grid-template-columns: 1fr 1fr;
+			gap: 2rem;
+		}
+	}
+
+	.philo-desc {
+		margin: 0.75rem 0 1.5rem;
+		color: hsl(var(--muted-foreground));
+		line-height: 1.7;
+		max-width: 58ch;
+	}
+
+	.method-grid {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.method-card {
+		display: grid;
+		grid-template-columns: 48px 1fr;
+		gap: 0.9rem;
+		align-items: start;
+		padding: 1rem;
+		border: 1px solid hsl(var(--border) / 0.7);
+	}
+
+	.method-icon {
+		width: 42px;
+		height: 42px;
+		display: grid;
+		place-items: center;
+		border-radius: var(--radius-md);
+		background: hsl(var(--muted) / 0.45);
+		border: 1px solid hsl(var(--border) / 0.7);
+	}
+
+	.method-svg {
+		width: 18px;
+		height: 18px;
+		color: hsl(var(--foreground));
+		opacity: 0.9;
+	}
+
+	.method-title {
+		margin: 0;
+		font-weight: 700;
+		color: hsl(var(--foreground));
+		font-size: 0.95rem;
+	}
+
+	.method-text {
+		margin: 0.25rem 0 0;
+		color: hsl(var(--muted-foreground));
+		line-height: 1.6;
+		font-size: 0.85rem;
+	}
+
+	.core-card {
+		position: relative;
+		overflow: hidden;
+		border: 1px solid hsl(var(--border) / 0.7);
+		min-height: 280px;
+	}
+
+	.core-visual {
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(ellipse at 20% 30%, hsl(var(--primary) / 0.2), transparent 60%),
+			radial-gradient(ellipse at 80% 65%, hsl(var(--primary) / 0.14), transparent 55%),
+			repeating-radial-gradient(
+				circle at 60% 40%,
+				hsl(var(--border) / 0.7),
+				hsl(var(--border) / 0.7) 1px,
+				transparent 1px,
+				transparent 10px
+			);
+		opacity: 0.75;
+	}
+
+	.core-foot {
+		position: absolute;
+		left: 1.25rem;
+		right: 1.25rem;
+		bottom: 1.15rem;
+		z-index: 1;
+	}
+
+	.core-title {
+		margin: 0 0 0.65rem;
+		font-size: 0.8rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: hsl(var(--foreground));
+	}
+
+	.core-badges {
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+	}
+
+	.core-badge {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.3rem 0.5rem;
+		border-radius: var(--radius-sm);
+		border: 1px solid hsl(var(--border) / 0.8);
+		background: hsl(var(--background) / 0.35);
+		color: hsl(var(--foreground));
+		font-size: 0.7rem;
+		letter-spacing: 0.08em;
+	}
+
+	.interests-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.9rem;
+	}
+
+	@media (min-width: 640px) {
+		.interests-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.interests-grid {
+			grid-template-columns: repeat(5, 1fr);
+			gap: 1rem;
+		}
+	}
+
+	.interest-card {
+		display: grid;
+		place-items: center;
+		gap: 0.8rem;
+		padding: 1.6rem 1rem;
+		border: 1px solid hsl(var(--border) / 0.7);
+		text-align: center;
+		min-height: 140px;
+	}
+
+	.interest-icon {
+		width: 22px;
+		height: 22px;
+		color: hsl(var(--muted-foreground));
+	}
+
+	.interest-label {
+		margin: 0;
+		font-size: 0.7rem;
+		letter-spacing: 0.1em;
+		color: hsl(var(--foreground));
+		text-transform: uppercase;
+	}
+
+	.cta {
+		padding: 2.75rem 0 4rem;
+	}
+
+	.cta-card {
+		position: relative;
+		overflow: hidden;
+		border: 1px solid hsl(var(--border) / 0.7);
+		padding: 2.25rem 1.5rem;
+		text-align: center;
+	}
+
+	.cta-stars {
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(hsl(var(--border) / 0.7) 1px, transparent 1px),
+			radial-gradient(hsl(var(--border) / 0.45) 1px, transparent 1px);
+		background-size: 26px 26px, 42px 42px;
+		background-position: 0 0, 12px 16px;
+		opacity: 0.25;
+		pointer-events: none;
+	}
+
+	.cta-title {
+		position: relative;
+		margin: 0 0 1.35rem;
+		font-size: 1.4rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: hsl(var(--foreground));
+	}
+
+	.cta-actions {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.btn-primary,
+	.btn-outline {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1rem;
+		border-radius: var(--radius-md);
+		text-decoration: none;
+		font-weight: 700;
+		font-size: 0.85rem;
+		letter-spacing: 0.06em;
+	}
+
+	.btn-primary {
+		background: hsl(var(--primary));
+		color: hsl(var(--primary-foreground));
+		border: 1px solid hsl(var(--primary) / 0.85);
+	}
+
+	.btn-outline {
+		background: transparent;
+		color: hsl(var(--foreground));
+		border: 1px solid hsl(var(--border));
+	}
+</style>

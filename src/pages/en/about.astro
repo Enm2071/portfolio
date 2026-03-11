@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import AboutPage from "../../components/AboutPage.astro";
+---
+
+<Layout>
+	<div class="page">
+		<Navbar />
+		<main>
+			<AboutPage />
+		</main>
+		<footer>
+			<div class="footer-inner">
+				<p>
+					© {new Date().getFullYear()} Ernesto Nuñez Marrero. All rights reserved.
+				</p>
+			</div>
+		</footer>
+	</div>
+</Layout>
+
+<style>
+	.page {
+		min-height: 100vh;
+		background-color: hsl(var(--background));
+		color: hsl(var(--foreground));
+		overflow-x: hidden;
+	}
+
+	footer {
+		padding: 2rem 0;
+		text-align: center;
+		color: hsl(var(--muted-foreground));
+		background-color: hsl(var(--background));
+		border-top: 1px solid hsl(var(--border) / 0.6);
+	}
+
+	.footer-inner {
+		max-width: 1240px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		font-size: 0.875rem;
+	}
+
+	.footer-inner p {
+		margin: 0;
+	}
+</style>

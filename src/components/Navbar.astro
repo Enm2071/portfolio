@@ -4,12 +4,18 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const homeHref = `/${lang}/`;
+const aboutHref = `/${lang}/about`;
+const skillsHref = `/${lang}/#skills`;
+const projectsHref = `/${lang}/#projects`;
+const contactHref = `/${lang}/#contact`;
 ---
 
 <nav id="navbar" class="navbar">
     <div class="navbar-container">
         <!-- Logo -->
-        <a href="/" class="logo">
+        <a href={homeHref} class="logo">
             <Code2 class="icon-primary" />
             <span class="logo-text">
                 Dev<span class="primary">Portfolio</span>
@@ -18,11 +24,11 @@ const t = useTranslations(lang);
 
         <!-- Desktop Nav -->
         <div class="desktop-nav">
-            <a href="#about" class="nav-link">{t("nav_about")}</a>
-            <a href="#skills" class="nav-link">{t("nav_skills")}</a>
-            <a href="#projects" class="nav-link">{t("nav_projects")}</a>
+            <a href={aboutHref} class="nav-link">{t("nav_about")}</a>
+            <a href={skillsHref} class="nav-link">{t("nav_skills")}</a>
+            <a href={projectsHref} class="nav-link">{t("nav_projects")}</a>
 
-            <a href="#contact" class="btn-primary">{t("nav_contact")}</a>
+            <a href={contactHref} class="btn-primary">{t("nav_contact")}</a>
         </div>
 
         <!-- Mobile Nav Toggle -->
@@ -37,11 +43,11 @@ const t = useTranslations(lang);
     <div id="mobile-menu" class="mobile-menu">
         <button id="close-mobile" class="close-btn">×</button>
 
-        <a href="#about" class="mobile-link">{t("nav_about")}</a>
-        <a href="#skills" class="mobile-link">{t("nav_skills")}</a>
-        <a href="#projects" class="mobile-link">{t("nav_projects")}</a>
+        <a href={aboutHref} class="mobile-link">{t("nav_about")}</a>
+        <a href={skillsHref} class="mobile-link">{t("nav_skills")}</a>
+        <a href={projectsHref} class="mobile-link">{t("nav_projects")}</a>
 
-        <a href="#contact" class="btn-primary full">{t("nav_contact")}</a>
+        <a href={contactHref} class="btn-primary full">{t("nav_contact")}</a>
     </div>
 </nav>
 
