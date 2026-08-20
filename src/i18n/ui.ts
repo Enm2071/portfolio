@@ -142,7 +142,6 @@ export const ui = {
     projects_title: "Proyectos <span class=\"primary\">Destacados</span>",
     projects_subtitle:
       "Una selección de mi trabajo reciente, desde aplicaciones web hasta sistemas de diseño.",
-    projects_github_button: "Ver cuenta de GitHub",
 
     // project_1_title: "E-Commerce Dashboard",
     // project_1_description:
@@ -191,6 +190,18 @@ export const ui = {
     project_9_title: "Gestión de Seguros Empresariales (EE. UU.)",
     project_9_description:
       "Plataforma para administrar pólizas, cotizaciones y renovaciones para empresas en Estados Unidos, con paneles operativos y flujos de aprobación. Frontend en React y backend en .NET/C#, integrando servicios en AWS para escalabilidad y seguridad.",
+
+    project_10_title: "Proyfin — Plataforma Personal de Finanzas",
+    project_10_description:
+      "Desarrollo full-stack de una app de finanzas personales con seguimiento de ingresos/gastos, categorización asistida por IA (OpenAI) y recordatorios de deudas. Automatización de resúmenes quincenales por correo y conciliación de pagos con flujos n8n, suscripciones con Stripe, PWA con notificaciones push y suite de pruebas (Jest + Playwright) sobre Neon Postgres.",
+
+    project_11_title: "Alianca ERP — Plataforma Multi-Tenant para PYMEs",
+    project_11_description:
+      "Construcción del ERP multi-tenant de Alianca desde cero: autenticación real con AWS Cognito y URLs por tenant, módulos de Contactos, Ingresos y Contabilidad, y una capa de hooks compartidos (paginación, CRUD, ordenamiento) reutilizada en todos los módulos para acelerar el desarrollo. Implementación fiel al sistema de diseño en Figma, incluyendo soporte completo de modo claro/oscuro.",
+
+    project_12_title: "Alianca Reportes — Facturación y Reportes Fiscales DGII",
+    project_12_description:
+      "Plataforma de facturación electrónica y reportes fiscales (606/607) para República Dominicana. Motor de extracción de facturas con AWS Textract y aprendizaje incremental de plantillas, backend serverless (Cognito, DynamoDB, S3, EventBridge, SQS, Lambda), cobros recurrentes con Stripe y autenticación con Google OAuth.",
 
     /* ============================
         SKILLS
@@ -339,7 +350,6 @@ export const ui = {
     projects_title: "Featured <span class=\"primary\">Projects</span>",
     projects_subtitle:
       "A selection of my recent work, ranging from web applications to design systems.",
-    projects_github_button: "View GitHub Account",
 
     // project_1_title: "E-Commerce Dashboard",
     // project_1_description:
@@ -387,6 +397,18 @@ export const ui = {
     project_9_title: "US Business Insurance Management",
     project_9_description:
       "Platform to manage policies, quotes, and renewals for US businesses, with operational dashboards and approval workflows. React frontend and .NET/C# backend, integrating AWS services for scalability and security.",
+
+    project_10_title: "Proyfin — Personal Finance Platform",
+    project_10_description:
+      "Full-stack development of a personal finance app with income/expense tracking, AI-assisted categorization (OpenAI), and debt reminders. Automated biweekly email summaries and payment reconciliation via n8n workflows, Stripe subscriptions, a PWA with push notifications, and a full test suite (Jest + Playwright) on Neon Postgres.",
+
+    project_11_title: "Alianca ERP — Multi-Tenant Platform for SMBs",
+    project_11_description:
+      "Built Alianca's multi-tenant ERP from the ground up: real authentication with AWS Cognito and per-tenant URL scoping, Contacts/Income/Accounting modules, and a shared hooks layer (pagination, CRUD, sorting) reused across every module to speed up development. Pixel-accurate implementation of the Figma design system, including full light/dark mode support.",
+
+    project_12_title: "Alianca Reportes — DGII Invoicing & Tax Reports",
+    project_12_description:
+      "Electronic invoicing and tax reporting platform (606/607) for the Dominican Republic. Invoice extraction engine built on AWS Textract with incremental template learning, a serverless backend (Cognito, DynamoDB, S3, EventBridge, SQS, Lambda), recurring billing with Stripe, and Google OAuth authentication.",
 
     /* ============================
         SKILLS
