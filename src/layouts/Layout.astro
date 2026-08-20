@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 const lang = Astro.url.pathname.split("/")[1] || "es";
 ---
 <!doctype html>
@@ -15,6 +16,7 @@ const lang = Astro.url.pathname.split("/")[1] || "es";
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
 		/>
+		<ClientRouter />
 	</head>
 	<body>
 		<slot />

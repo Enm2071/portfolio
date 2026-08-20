@@ -204,6 +204,14 @@ export const ui = {
       "Plataforma de facturación electrónica y reportes fiscales (606/607) para República Dominicana. Motor de extracción de facturas con AWS Textract y aprendizaje incremental de plantillas, backend serverless (Cognito, DynamoDB, S3, EventBridge, SQS, Lambda), cobros recurrentes con Stripe y autenticación con Google OAuth.",
 
     /* ============================
+        PROJECT DETAIL PAGE
+    ============================ */
+    project_detail_back: "Volver a Proyectos",
+    project_detail_stack_label: "Stack Técnico",
+    project_detail_not_found_title: "Proyecto no encontrado",
+    project_detail_not_found_description: "El proyecto que buscas no existe o fue movido.",
+
+    /* ============================
         SKILLS
     ============================ */
 
@@ -409,6 +417,14 @@ export const ui = {
     project_12_title: "Alianca Reportes — DGII Invoicing & Tax Reports",
     project_12_description:
       "Electronic invoicing and tax reporting platform (606/607) for the Dominican Republic. Invoice extraction engine built on AWS Textract with incremental template learning, a serverless backend (Cognito, DynamoDB, S3, EventBridge, SQS, Lambda), recurring billing with Stripe, and Google OAuth authentication.",
+
+    /* ============================
+        PROJECT DETAIL PAGE
+    ============================ */
+    project_detail_back: "Back to Projects",
+    project_detail_stack_label: "Tech Stack",
+    project_detail_not_found_title: "Project not found",
+    project_detail_not_found_description: "The project you're looking for doesn't exist or was moved.",
 
     /* ============================
         SKILLS

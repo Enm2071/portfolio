@@ -1,0 +1,160 @@
+---
+import { ArrowLeft } from "lucide-astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getProjectBySlug } from "../data/projects";
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const backHref = `/${lang}/#projects`;
+
+const meta = getProjectBySlug(slug);
+if (!meta) Astro.response.status = 404;
+
+const title = meta ? t(`${meta.i18nKey}_title` as Parameters<typeof t>[0]) : "";
+const description = meta ? t(`${meta.i18nKey}_description` as Parameters<typeof t>[0]) : "";
+---
+
+{!meta ? (
+  <section class="not-found">
+    <h1 class="font-display">{t("project_detail_not_found_title")}</h1>
+    <p>{t("project_detail_not_found_description")}</p>
+    <a href={backHref} class="back-link">
+      <ArrowLeft class="icon-sm" />
+      {t("project_detail_back")}
+    </a>
+  </section>
+) : (
+  <article class="project-detail">
+    <a href={backHref} class="back-link">
+      <ArrowLeft class="icon-sm" />
+      {t("project_detail_back")}
+    </a>
+
+    <div class="hero-image">
+      <img src={meta.image} alt={title} transition:name={`project-photo-${meta.slug}`} />
+    </div>
+
+    <h1 class="title font-display" transition:name={`project-title-${meta.slug}`}>{title}</h1>
+
+    <p class="description">{description}</p>
+
+    <div class="stack">
+      <h2 class="stack-label">{t("project_detail_stack_label")}</h2>
+      <div class="tags">
+        {meta.tags.map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+    </div>
+  </article>
+)}
+
+<style>
+  .project-detail,
+  .not-found {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 8rem 1.5rem 6rem 1.5rem;
+  }
+
+  .not-found {
+    text-align: center;
+  }
+
+  .not-found h1 {
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    color: hsl(var(--foreground));
+    margin-bottom: 0.75rem;
+  }
+
+  .not-found p {
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 2rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: hsl(var(--muted-foreground));
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: hsl(var(--primary));
+  }
+
+  .icon-sm {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero-image {
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border: 1px solid hsl(var(--border) / 0.7);
+    aspect-ratio: 16 / 9;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .title {
+    font-size: 2.25rem;
+    letter-spacing: 0.02em;
+    font-weight: 800;
+    color: hsl(var(--foreground));
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  @media (min-width: 768px) {
+    .title {
+      font-size: 3rem;
+    }
+  }
+
+  .description {
+    color: hsl(var(--muted-foreground));
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .stack-label {
+    font-family: var(--font-display);
+    letter-spacing: 0.03em;
+    font-size: 1rem;
+    color: hsl(var(--foreground));
+    margin-bottom: 1rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .tag {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+    background: hsl(var(--card) / 0.5);
+    border: 1px solid hsl(var(--border) / 0.7);
+    border-radius: 999px;
+    color: hsl(var(--foreground));
+  }
+</style>

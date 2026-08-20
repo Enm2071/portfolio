@@ -1,118 +1,18 @@
 ---
 import { ExternalLink } from "lucide-astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { projects } from "../data/projects";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// const projects = [
-//   {
-//     title: t("project_1_title"),
-//     description: t("project_1_description"),
-//     tags: ["React", "Recharts", "Tailwind", "Node.js"],
-//     image:
-//       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-//   },
-//   {
-//     title: t("project_2_title"),
-//     description: t("project_2_description"),
-//     tags: ["Next.js", "OpenAI API", "Stripe", "TypeScript"],
-//     image:
-//       "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
-//   },
-//   {
-//     title: t("project_3_title"),
-//     description: t("project_3_description"),
-//     tags: ["Vue.js", "Firebase", "Pinia", "Sass"],
-//     image:
-//       "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=800&q=80",
-//   },
-// ];
-
-const projects2 = [
-  {
-    title: t("project_1_title"),
-    description: t("project_1_description"),
-    tags: ["Next.js", "Node.js", "React", "Express", "Tailwind"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: t("project_2_title"),
-    description: t("project_2_description"),
-    tags: ["Python", "GraphQL", "pytest", "API Design"],
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: t("project_7_title"),
-    description: t("project_7_description"),
-    tags: ["Python", "GraphQL", "pytest", "Django"],
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: t("project_8_title"),
-    description: t("project_8_description"),
-    tags: [
-      "React",
-      "AWS",
-      "Cognito",
-      "Amplify",
-      "Electron",
-      "DynamoDB",
-      "Lambda",
-      "Stripe",
-    ],
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: t("project_9_title"),
-    description: t("project_9_description"),
-    tags: [".NET", "C#", "React", "AWS"],
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: t("project_3_title"),
-    description: t("project_3_description"),
-    tags: ["React", "TypeScript", "Micro-Frontend", ".NET"],
-    image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: t("project_4_title"),
-    description: t("project_4_description"),
-    tags: ["React", "Redux", "C#", ".NET Core"],
-    image: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: t("project_5_title"),
-    description: t("project_5_description"),
-    tags: ["React Native", "JavaScript", "Payments", "Mobile"],
-    image: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: t("project_6_title"),
-    description: t("project_6_description"),
-    tags: ["Vue.js", "React", ".NET", "Mobile", "Payments"],
-    image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: t("project_10_title"),
-    description: t("project_10_description"),
-    tags: ["Next.js", "TypeScript", "MUI", "Neon Postgres", "Stripe", "OpenAI", "n8n", "PWA"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: t("project_11_title"),
-    description: t("project_11_description"),
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AWS Cognito", "TanStack Query"],
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: t("project_12_title"),
-    description: t("project_12_description"),
-    tags: ["Next.js", "TypeScript", "MUI", "AWS Textract", "DynamoDB", "Lambda", "Stripe"],
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80",
-  }
-];
-
+const projects2 = projects.map((p) => ({
+  slug: p.slug,
+  title: t(`${p.i18nKey}_title` as Parameters<typeof t>[0]),
+  description: t(`${p.i18nKey}_description` as Parameters<typeof t>[0]),
+  tags: p.tags,
+  image: p.image,
+}));
 ---
 
 <section id="projects" class="projects-section">
@@ -132,27 +32,27 @@ const projects2 = [
     <!-- Projects Grid -->
     <div class="projects-grid">
       {projects2.map((project, index) => (
-        <div 
+        <div
           class="project-card animate-fade-up"
           style={`animation-delay: ${index * 0.2}s`}
         >
-          <div class="card">
+          <a href={`/${lang}/projects/${project.slug}`} class="card">
 
             <!-- Image -->
             <div class="card-image">
-              <img src={project.image} alt={project.title} />
+              <img src={project.image} alt={project.title} transition:name={`project-photo-${project.slug}`} />
 
               <!-- Hover Icon -->
               <div class="image-hover">
-                <a class="icon-circle primary-bg">
+                <span class="icon-circle primary-bg">
                   <ExternalLink class="icon-md" />
-                </a>
+                </span>
               </div>
             </div>
 
             <!-- Content -->
             <div class="card-content">
-              <h3 class="card-title">{project.title}</h3>
+              <h3 class="card-title" transition:name={`project-title-${project.slug}`}>{project.title}</h3>
               <p class="card-description">{project.description}</p>
 
               <div class="tags">
@@ -162,7 +62,7 @@ const projects2 = [
               </div>
             </div>
 
-          </div>
+          </a>
         </div>
       ))}
     </div>
@@ -265,6 +165,8 @@ const projects2 = [
     flex-direction: column;
     transition: box-shadow .3s ease;
     height: 100%;
+    text-decoration: none;
+    color: inherit;
   }
 
   .card:hover {
