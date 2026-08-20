@@ -12,6 +12,16 @@ export const defaultLang = "es";
 export const ui = {
   es: {
     /* ============================
+        SEO (Layout.astro defaults)
+    ============================ */
+    site_title: "Ernesto Nuñez Marrero — Desarrollador Full Stack",
+    site_description:
+      "Portafolio de Ernesto Nuñez Marrero, desarrollador Full Stack con 7+ años de experiencia en React, Next.js, Node.js y AWS, radicado en Santo Domingo, República Dominicana.",
+    about_page_title: "Sobre Mí — Ernesto Nuñez Marrero",
+    about_page_description:
+      "Conoce a Ernesto Nuñez Marrero: 7+ años como desarrollador Full Stack especializado en React, Next.js, Node.js y arquitecturas cloud-native en AWS.",
+
+    /* ============================
         ABOUT / HERO
     ============================ */
     about_title: 'Hola, soy <span class="text-gradient">Ernesto Núñez</span>.<br/>Desarrollador Full Stack.',
@@ -227,6 +237,16 @@ export const ui = {
   },
 
   en: {
+    /* ============================
+        SEO (Layout.astro defaults)
+    ============================ */
+    site_title: "Ernesto Nuñez Marrero — Full Stack Developer",
+    site_description:
+      "Portfolio of Ernesto Nuñez Marrero, a Full Stack developer with 7+ years of experience in React, Next.js, Node.js, and AWS, based in Santo Domingo, Dominican Republic.",
+    about_page_title: "About Me — Ernesto Nuñez Marrero",
+    about_page_description:
+      "Meet Ernesto Nuñez Marrero: a Full Stack developer with 8+ years of experience building high-performance apps with React, Next.js, Node.js, and AWS.",
+
     /* ============================
         ABOUT / HERO
     ============================ */

@@ -1,15 +1,88 @@
 ---
 import { ClientRouter } from "astro:transitions";
-const lang = Astro.url.pathname.split("/")[1] || "es";
+import profileImage from "../assets/images/enm.jpeg";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { supportedLangs } from "../i18n/ui";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+}
+
+const { title, description, image } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pageTitle = title ?? t("site_title");
+const pageDescription = description ?? t("site_description");
+const ogImage = image ?? new URL(profileImage.src, Astro.site).toString();
+
+// Both locale trees are structurally mirrored 1:1 (/es/x <-> /en/x), so
+// the alternate-language URL for any page is just its own path with the
+// leading locale segment swapped -- no per-page wiring needed. Canonical
+// is built from the same normalized pieces (rather than the raw,
+// sometimes-trailing-slash Astro.url.pathname) so it always exactly
+// matches this page's own hreflang="{lang}" self-reference below --
+// otherwise "/es" (canonical) vs "/es/" (hreflang) point at the same
+// page but read as two different URLs to a strict crawler.
+const pathWithoutLang = Astro.url.pathname.replace(/^\/(es|en)/, "") || "/";
+const canonicalURL = new URL(`/${lang}${pathWithoutLang}`, Astro.site);
+const ogLocale = lang === "es" ? "es_DO" : "en_US";
+const ogLocaleAlternate = lang === "es" ? "en_US" : "es_DO";
+
+const personSchema = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "Ernesto Nuñez Marrero",
+	url: Astro.site?.toString(),
+	image: ogImage,
+	jobTitle: lang === "es" ? "Desarrollador Full Stack" : "Full Stack Developer",
+	email: "mailto:enm2071@gmail.com",
+	sameAs: ["https://www.linkedin.com/in/ernesto-nunez-marrero/"],
+	address: {
+		"@type": "PostalAddress",
+		addressLocality: "Santo Domingo",
+		addressCountry: "DO",
+	},
+};
 ---
 <!doctype html>
 <html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="theme-color" content="#111418" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Ernesto Developer Portfolio</title>
+
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
+		<link rel="canonical" href={canonicalURL} />
+		{supportedLangs.map((altLang) => (
+			<link rel="alternate" hreflang={altLang} href={new URL(`/${altLang}${pathWithoutLang}`, Astro.site)} />
+		))}
+		<link rel="alternate" hreflang="x-default" href={new URL(`/es${pathWithoutLang}`, Astro.site)} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:site_name" content="Ernesto Nuñez Marrero" />
+		<meta property="og:locale" content={ogLocale} />
+		<meta property="og:locale:alternate" content={ogLocaleAlternate} />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDescription} />
+		<meta name="twitter:image" content={ogImage} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link

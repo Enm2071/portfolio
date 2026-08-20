@@ -1,3 +1,9 @@
 ---
-Astro.redirect("/es");
+// middleware.ts already redirects "/" (and any path with no locale
+// prefix) before a request ever reaches this route, so this is a
+// belt-and-suspenders fallback, not the primary redirect path. The
+// return here matters: Astro.redirect() only takes effect if its
+// Response is actually returned from the frontmatter -- calling it
+// without `return` (as this previously did) silently does nothing.
+return Astro.redirect("/es");
 ---

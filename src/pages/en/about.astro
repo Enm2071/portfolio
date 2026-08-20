@@ -2,9 +2,12 @@
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import AboutPage from "../../components/AboutPage.astro";
+import { useTranslations } from "../../i18n/utils";
+
+const t = useTranslations("en");
 ---
 
-<Layout>
+<Layout title={t("about_page_title")} description={t("about_page_description")}>
 	<div class="page">
 		<Navbar />
 		<main>

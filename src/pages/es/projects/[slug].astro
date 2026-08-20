@@ -2,11 +2,19 @@
 import Layout from "../../../layouts/Layout.astro";
 import Navbar from "../../../components/Navbar.astro";
 import ProjectDetail from "../../../components/ProjectDetail.astro";
+import { useTranslations } from "../../../i18n/utils";
+import { getProjectBySlug } from "../../../data/projects";
 
 const { slug } = Astro.params;
+const t = useTranslations("es");
+const meta = getProjectBySlug(slug as string);
+const pageTitle = meta
+	? `${t(`${meta.i18nKey}_title` as Parameters<typeof t>[0])} — Ernesto Nuñez Marrero`
+	: t("project_detail_not_found_title");
+const pageDescription = meta ? t(`${meta.i18nKey}_description` as Parameters<typeof t>[0]) : undefined;
 ---
 
-<Layout>
+<Layout title={pageTitle} description={pageDescription} image={meta?.image}>
 	<div class="page">
 		<Navbar />
 		<main>
