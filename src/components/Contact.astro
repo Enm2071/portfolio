@@ -343,19 +343,26 @@ const t = useTranslations(lang);
 </style>
 
 <script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target); // once: true
-        }
-      });
-    },
-    { threshold: 0.2 },
-  );
+  // See TechStack.astro's identical comment: this must run on
+  // "astro:page-load" (fires after initial load AND every client-side
+  // View Transitions navigation), not as bare top-level code, or a
+  // client-side navigation into this section leaves it stuck at
+  // opacity: 0 until a hard reload.
+  document.addEventListener("astro:page-load", () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target); // once: true
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
 
-  document
-    .querySelectorAll(".reveal-left, .reveal-right")
-    .forEach((el) => observer.observe(el));
+    document
+      .querySelectorAll(".reveal-left, .reveal-right")
+      .forEach((el) => observer.observe(el));
+  });
 </script>

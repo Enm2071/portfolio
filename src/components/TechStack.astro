@@ -284,18 +284,26 @@ const skills: Skill[] = [
 </style>
 
 <script>
-  // Intersection observer for Framer-like animation
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target); // Once, like Framer
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
+  // Intersection observer for Framer-like animation. Runs on
+  // "astro:page-load" (fires after the initial load AND after every
+  // client-side View Transitions navigation) rather than as bare
+  // top-level code — a plain top-level script only ever runs once per
+  // hard page load, so after wiring up <ClientRouter /> a later
+  // client-side navigation into this section left every .reveal card
+  // stuck at its base opacity: 0 until the user forced a full reload.
+  document.addEventListener("astro:page-load", () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target); // Once, like Framer
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  });
 </script>
