@@ -3,7 +3,7 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-import { Layout, Server, Globe, Smartphone, Database } from "lucide-astro";
+import PixelIcon from "./PixelIcon.astro";
 
 type SkillCategory =
   | "skills_category_frontend"
@@ -11,18 +11,17 @@ type SkillCategory =
   | "skills_category_devops"
   | "skills_category_mobile"
   | "skills_category_database";
-  ;
 
 interface Skill {
   category: SkillCategory;
-  icon: any;
+  icon: "layout" | "server" | "globe" | "smartphone" | "database";
   items: string[];
 }
 
 const skills: Skill[] = [
   {
     category: "skills_category_frontend",
-    icon: Layout,
+    icon: "layout",
     items: [      "ReactJS",
       "Next.js",
       "Angular",
@@ -38,7 +37,7 @@ const skills: Skill[] = [
   },
   {
     category: "skills_category_backend",
-    icon: Server,
+    icon: "server",
     items: [  "Node.js",
     "Redis",
       "Express.js",
@@ -52,7 +51,7 @@ const skills: Skill[] = [
   },
     {
     category: "skills_category_database",
-    icon: Database,
+    icon: "database",
     items: [
       "MySQL",
       "MongoDB",
@@ -65,7 +64,7 @@ const skills: Skill[] = [
   },
   {
     category: "skills_category_devops",
-    icon: Globe,
+    icon: "globe",
     items: [
       "AWS Serverless",
       "AWS Lambda",
@@ -84,7 +83,7 @@ const skills: Skill[] = [
   },
   {
     category: "skills_category_mobile",
-    icon: Smartphone,
+    icon: "smartphone",
     items: ["React Native", "Expo", "iOS", "Android", "Mobile UI/UX"]
   }
 ];
@@ -111,7 +110,7 @@ const skills: Skill[] = [
         >
           <!-- Icon -->
           <div class="skill-icon">
-            <skill.icon class="icon-md" />
+            <PixelIcon name={skill.icon} class="icon-md" />
           </div>
 
           <h3 class="skill-category">

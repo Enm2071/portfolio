@@ -1,5 +1,5 @@
 ---
-import { Mail, MapPin, Phone, Send } from "lucide-astro";
+import PixelIcon from "./PixelIcon.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import type { AstroGlobal } from "astro";
 
@@ -21,7 +21,7 @@ const t = useTranslations(lang);
 
         <div class="contact-info">
           <div class="info-row">
-            <div class="info-icon"><Mail class="icon-sm" /></div>
+            <div class="info-icon"><PixelIcon name="mail" class="icon-sm" /></div>
             <div>
               <p class="info-label">{t("contact_emailLabel")}</p>
               <a href={"mailto:" + t("contact_emailValue")} class="info-value">
@@ -31,7 +31,7 @@ const t = useTranslations(lang);
           </div>
 
           <div class="info-row">
-            <div class="info-icon"><Phone class="icon-sm" /></div>
+            <div class="info-icon"><PixelIcon name="phone" class="icon-sm" /></div>
             <div>
               <p class="info-label">{t("contact_phoneLabel")}</p>
               <a href={"tel:" + t("contact_phoneValue")} class="info-value">
@@ -41,7 +41,7 @@ const t = useTranslations(lang);
           </div>
 
           <div class="info-row">
-            <div class="info-icon"><MapPin class="icon-sm" /></div>
+            <div class="info-icon"><PixelIcon name="map-pin" class="icon-sm" /></div>
             <div>
               <p class="info-label">{t("contact_locationLabel")}</p>
               <p class="info-value">{t("contact_locationValue")}</p>
@@ -82,7 +82,7 @@ const t = useTranslations(lang);
 
             <button class="btn-submit">
               {t("contact_send")}
-              <Send class="icon-sm" />
+              <PixelIcon name="send" class="icon-sm" />
             </button>
           </div>
         </div>

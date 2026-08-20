@@ -1,6 +1,6 @@
 ---
 import profileImage from "../assets/images/enm.jpeg";
-import { ArrowRight, Download, Info } from "lucide-astro";
+import PixelIcon from "./PixelIcon.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -33,9 +33,9 @@ const t = useTranslations(lang);
             href={`/${lang}/about`}
             aria-label={t("about_readMore")}
           >
-            <Info class="icon-left" />
+            <PixelIcon name="info" class="icon-left" />
             <span class="readmore-label">{t("about_readMore")}</span>
-            <ArrowRight class="icon-right" />
+            <PixelIcon name="arrow-right" class="icon-right" />
           </a>
           <div>
             <a
@@ -44,7 +44,7 @@ const t = useTranslations(lang);
               target="_blank"
             >
               {t("about_viewProjects")}
-              <ArrowRight class="icon-sm" />
+              <PixelIcon name="arrow-right" class="icon-sm" />
             </a>
             <a
               href="/assets/Ernesto_Nuñez_Marrero_-_Full_Stack_Senior_Developer.pdf"
@@ -52,7 +52,7 @@ const t = useTranslations(lang);
               class="btn-outline"
             >
               {t("about_downloadCV")}
-              <Download class="icon-sm" />
+              <PixelIcon name="download" class="icon-sm" />
             </a>
           </div>
         </div>

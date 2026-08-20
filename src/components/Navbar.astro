@@ -1,5 +1,5 @@
 ---
-import { Code2, Menu } from "lucide-astro";
+import PixelIcon from "./PixelIcon.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -16,7 +16,7 @@ const contactHref = `/${lang}/#contact`;
     <div class="navbar-container">
         <!-- Logo -->
         <a href={homeHref} class="logo">
-            <Code2 class="icon-primary" />
+            <PixelIcon name="code" class="icon-primary" />
             <span class="logo-text">
                 Dev<span class="primary">Portfolio</span>
             </span>
@@ -34,14 +34,16 @@ const contactHref = `/${lang}/#contact`;
         <!-- Mobile Nav Toggle -->
         <div class="mobile-nav-toggle">
             <button id="mobile-btn" class="btn-icon">
-                <Menu class="menu-icon" />
+                <PixelIcon name="menu" class="menu-icon" />
             </button>
         </div>
     </div>
 
     <!-- Drawer Mobile -->
     <div id="mobile-menu" class="mobile-menu">
-        <button id="close-mobile" class="close-btn">×</button>
+        <button id="close-mobile" class="close-btn">
+            <PixelIcon name="close" class="close-icon" />
+        </button>
 
         <a href={aboutHref} class="mobile-link">{t("nav_about")}</a>
         <a href={skillsHref} class="mobile-link">{t("nav_skills")}</a>
@@ -216,9 +218,14 @@ const contactHref = `/${lang}/#contact`;
         align-self: flex-end;
         background: none;
         border: none;
-        font-size: 2rem;
         color: hsl(var(--foreground));
         cursor: pointer;
+        display: flex;
+    }
+
+    .close-icon {
+        width: 24px;
+        height: 24px;
     }
 
     .mobile-link {

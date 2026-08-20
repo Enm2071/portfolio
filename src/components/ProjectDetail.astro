@@ -1,5 +1,5 @@
 ---
-import { ArrowLeft } from "lucide-astro";
+import PixelIcon from "./PixelIcon.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { getProjectBySlug } from "../data/projects";
 
@@ -24,14 +24,14 @@ const description = meta ? t(`${meta.i18nKey}_description` as Parameters<typeof 
     <h1 class="font-display">{t("project_detail_not_found_title")}</h1>
     <p>{t("project_detail_not_found_description")}</p>
     <a href={backHref} class="back-link">
-      <ArrowLeft class="icon-sm" />
+      <PixelIcon name="arrow-left" class="icon-sm" />
       {t("project_detail_back")}
     </a>
   </section>
 ) : (
   <article class="project-detail">
     <a href={backHref} class="back-link">
-      <ArrowLeft class="icon-sm" />
+      <PixelIcon name="arrow-left" class="icon-sm" />
       {t("project_detail_back")}
     </a>
 

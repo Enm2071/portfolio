@@ -1,12 +1,6 @@
 ---
 import profileImage from "../assets/images/enm.jpeg";
-import {
-	Camera,
-	Code,
-	Gamepad2,
-	Terminal,
-	Waves,
-} from "lucide-astro";
+import PixelIcon from "./PixelIcon.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -107,7 +101,7 @@ const contactHref = `/${lang}/#contact`;
 					<div class="method-grid">
 						<div class="method-card glass-card radius-lg">
 							<div class="method-icon" aria-hidden="true">
-								<Waves class="method-svg" />
+								<PixelIcon name="waves" class="method-svg" />
 							</div>
 							<div>
 								<p class="method-title">{t("about_page_method_1_title")}</p>
@@ -117,7 +111,7 @@ const contactHref = `/${lang}/#contact`;
 
 						<div class="method-card glass-card radius-lg">
 							<div class="method-icon" aria-hidden="true">
-								<Code class="method-svg" />
+								<PixelIcon name="code" class="method-svg" />
 							</div>
 							<div>
 								<p class="method-title">{t("about_page_method_2_title")}</p>
@@ -155,23 +149,23 @@ const contactHref = `/${lang}/#contact`;
 
 			<div class="interests-grid">
 				<div class="interest-card glass-card radius-lg">
-					<Gamepad2 class="interest-icon" aria-hidden="true" />
+					<PixelIcon name="gamepad" class="interest-icon" aria-hidden="true" />
 					<p class="interest-label">{t("about_page_interest_1")}</p>
 				</div>
 				<div class="interest-card glass-card radius-lg">
-					<Code class="interest-icon" aria-hidden="true" />
+					<PixelIcon name="code" class="interest-icon" aria-hidden="true" />
 					<p class="interest-label">{t("about_page_interest_2")}</p>
 				</div>
 				<div class="interest-card glass-card radius-lg">
-					<Waves class="interest-icon" aria-hidden="true" />
+					<PixelIcon name="waves" class="interest-icon" aria-hidden="true" />
 					<p class="interest-label">{t("about_page_interest_3")}</p>
 				</div>
 				<div class="interest-card glass-card radius-lg">
-					<Camera class="interest-icon" aria-hidden="true" />
+					<PixelIcon name="camera" class="interest-icon" aria-hidden="true" />
 					<p class="interest-label">{t("about_page_interest_4")}</p>
 				</div>
 				<div class="interest-card glass-card radius-lg">
-					<Terminal class="interest-icon" aria-hidden="true" />
+					<PixelIcon name="terminal" class="interest-icon" aria-hidden="true" />
 					<p class="interest-label">{t("about_page_interest_5")}</p>
 				</div>
 			</div>

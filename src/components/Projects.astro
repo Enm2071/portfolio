@@ -1,5 +1,5 @@
 ---
-import { ExternalLink } from "lucide-astro";
+import PixelIcon from "./PixelIcon.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { projects } from "../data/projects";
 
@@ -45,7 +45,7 @@ const projects2 = projects.map((p) => ({
               <!-- Hover Icon -->
               <div class="image-hover">
                 <span class="icon-circle primary-bg">
-                  <ExternalLink class="icon-md" />
+                  <PixelIcon name="external-link" class="icon-md" />
                 </span>
               </div>
             </div>
