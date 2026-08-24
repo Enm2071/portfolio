@@ -335,7 +335,18 @@ const t = useTranslations(lang);
   .form-row {
     display: grid;
     gap: 1rem;
-    grid-template-columns: 1fr 1fr;
+    /* Single column on mobile -- two inputs side by side on a narrow phone
+       have no room to breathe, and (like every other grid fixed elsewhere
+       in this file) grid items default to min-width: auto, so unconstrained
+       "1fr 1fr" columns don't actually shrink below the inputs' own
+       intrinsic minimum width, breaking out of the form card. */
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 480px) {
+    .form-row {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
   }
 
   .form-field {

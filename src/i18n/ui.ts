@@ -157,6 +157,8 @@ export const ui = {
     projects_title: "Proyectos <span class=\"primary\">Destacados</span>",
     projects_subtitle:
       "Una selección de mi trabajo reciente, desde aplicaciones web hasta sistemas de diseño.",
+    projects_showMore: "Mostrar más proyectos",
+    projects_showLess: "Mostrar menos",
 
     // project_1_title: "E-Commerce Dashboard",
     // project_1_description:
@@ -388,6 +390,8 @@ export const ui = {
     projects_title: "Featured <span class=\"primary\">Projects</span>",
     projects_subtitle:
       "A selection of my recent work, ranging from web applications to design systems.",
+    projects_showMore: "Show more projects",
+    projects_showLess: "Show less",
 
     // project_1_title: "E-Commerce Dashboard",
     // project_1_description:
