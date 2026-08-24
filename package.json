@@ -13,14 +13,12 @@
     "@astrojs/vercel": "^9.0.2",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.16.3",
-    "nodemailer": "^9.0.5",
     "pixelarticons": "^2.4.1",
     "tailwindcss": "^3.4.18",
     "tw-animate": "^1.0.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@types/nodemailer": "^8.0.1",
     "typescript": "^5.9.3"
   }
 }

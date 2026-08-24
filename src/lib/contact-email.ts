@@ -1,5 +1,3 @@
-import nodemailer from "nodemailer";
-
 export type ContactSubmission = {
   firstName: string;
   lastName: string;
@@ -7,32 +5,14 @@ export type ContactSubmission = {
   message: string;
 };
 
+// astro.config.mjs runs this app's SSR (including this API route) on
+// Vercel's Edge Runtime (edgeMiddleware: true) — no Node "net"/"tls", so an
+// SMTP client (nodemailer) can't work here. Resend's plain HTTP API (fetch)
+// works fine on Edge, which is why this calls it directly instead.
 function requiredEnv(name: string) {
   const value = import.meta.env[name] ?? process.env[name];
   if (!value) throw new Error(`${name} no esta configurada.`);
   return value;
-}
-
-function booleanEnv(value: string | undefined, fallback: boolean) {
-  if (!value) return fallback;
-  return value === "true";
-}
-
-function numberEnv(value: string | undefined, fallback: number) {
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : fallback;
-}
-
-function createTransport() {
-  return nodemailer.createTransport({
-    host: requiredEnv("SMTP_HOST"),
-    port: numberEnv(import.meta.env.SMTP_PORT ?? process.env.SMTP_PORT, 465),
-    secure: booleanEnv(import.meta.env.SMTP_SECURE ?? process.env.SMTP_SECURE, true),
-    auth: {
-      user: requiredEnv("SMTP_USER"),
-      pass: requiredEnv("SMTP_PASS"),
-    },
-  });
 }
 
 function escapeHtml(value: string) {
@@ -146,14 +126,26 @@ function buildText(data: ContactSubmission) {
 
 export async function sendContactEmail(data: ContactSubmission) {
   const to = (import.meta.env.CONTACT_TO_EMAIL ?? process.env.CONTACT_TO_EMAIL ?? "enm2071@gmail.com") as string;
-  const transporter = createTransport();
+  const apiKey = requiredEnv("RESEND_API_KEY");
 
-  await transporter.sendMail({
-    from: requiredEnv("EMAIL_FROM"),
-    to,
-    replyTo: data.email,
-    subject: buildSubject(data),
-    html: buildHtml(data),
-    text: buildText(data),
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: requiredEnv("EMAIL_FROM"),
+      to,
+      reply_to: data.email,
+      subject: buildSubject(data),
+      html: buildHtml(data),
+      text: buildText(data),
+    }),
   });
+
+  if (!response.ok) {
+    const body = await response.text().catch(() => "");
+    throw new Error(`Resend ${response.status}: ${body}`);
+  }
 }
