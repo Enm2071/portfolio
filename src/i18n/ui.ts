@@ -135,6 +135,11 @@ export const ui = {
     contact_message_placeholder: "Cuéntame sobre tu proyecto...",
 
     contact_send: "Enviar Mensaje",
+    contact_sending: "Enviando...",
+    contact_success: "¡Mensaje enviado! Te responderé pronto.",
+    contact_error: "No se pudo enviar el mensaje. Intenta de nuevo o escríbeme directo por email.",
+    contact_error_required: "Completa todos los campos antes de enviar.",
+    contact_error_email: "Ingresa un email válido.",
 
     /* ============================
         NAVIGATION
@@ -361,6 +366,11 @@ export const ui = {
     contact_message_placeholder: "Tell me about your project...",
 
     contact_send: "Send Message",
+    contact_sending: "Sending...",
+    contact_success: "Message sent! I'll get back to you soon.",
+    contact_error: "Couldn't send the message. Try again or email me directly.",
+    contact_error_required: "Fill in every field before sending.",
+    contact_error_email: "Enter a valid email address.",
 
     /* ============================
         NAVIGATION

@@ -53,38 +53,76 @@ const t = useTranslations(lang);
       <!-- FORM -->
       <div class="contact-form reveal-right">
         <div class="form-card">
-          <div class="form-content">
+          <form
+            id="contact-form"
+            class="form-content"
+            data-msg-sending={t("contact_sending")}
+            data-msg-success={t("contact_success")}
+            data-msg-error={t("contact_error")}
+            data-msg-required={t("contact_error_required")}
+            data-msg-invalid-email={t("contact_error_email")}
+            data-label-send={t("contact_send")}
+            novalidate
+          >
             <div class="form-row">
               <div class="form-field">
-                <label>{t("contact_fname")}</label>
-                <input placeholder={t("contact_fname_placeholder")} />
+                <label for="contact-firstName">{t("contact_fname")}</label>
+                <input
+                  id="contact-firstName"
+                  name="firstName"
+                  autocomplete="given-name"
+                  placeholder={t("contact_fname_placeholder")}
+                  required
+                />
               </div>
 
               <div class="form-field">
-                <label>{t("contact_lname")}</label>
-                <input placeholder={t("contact_lname_placeholder")} />
+                <label for="contact-lastName">{t("contact_lname")}</label>
+                <input
+                  id="contact-lastName"
+                  name="lastName"
+                  autocomplete="family-name"
+                  placeholder={t("contact_lname_placeholder")}
+                  required
+                />
               </div>
             </div>
 
             <div class="form-field">
-              <label>{t("contact_form_email")}</label>
+              <label for="contact-email">{t("contact_form_email")}</label>
               <input
+                id="contact-email"
+                name="email"
                 type="email"
+                autocomplete="email"
                 placeholder={t("contact_form_email_placeholder")}
+                required
               />
             </div>
 
             <div class="form-field">
-              <label>{t("contact_message")}</label>
-              <textarea placeholder={t("contact_message_placeholder")}
+              <label for="contact-message">{t("contact_message")}</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                placeholder={t("contact_message_placeholder")}
+                required
               ></textarea>
             </div>
 
-            <button class="btn-submit">
-              {t("contact_send")}
+            <!-- Honeypot: hidden from real visitors, bots tend to fill every field. -->
+            <div class="form-field hp-field" aria-hidden="true">
+              <label for="contact-website">Website</label>
+              <input id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <p class="form-status" role="status" aria-live="polite"></p>
+
+            <button type="submit" class="btn-submit">
+              <span class="btn-submit-label">{t("contact_send")}</span>
               <PixelIcon name="send" class="icon-sm" />
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -335,6 +373,34 @@ const t = useTranslations(lang);
     background: hsl(var(--primary) / 0.9);
   }
 
+  .btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .hp-field {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .form-status {
+    margin: 0;
+    min-height: 1.2em;
+    font-size: 0.85rem;
+  }
+
+  .form-status[data-state="success"] {
+    color: #22c55e;
+  }
+
+  .form-status[data-state="error"] {
+    color: #ef4444;
+  }
+
   .text-gradient {
     background-image: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
     -webkit-background-clip: text;
@@ -364,5 +430,77 @@ const t = useTranslations(lang);
     document
       .querySelectorAll(".reveal-left, .reveal-right")
       .forEach((el) => observer.observe(el));
+  });
+</script>
+
+<script>
+  // See the reveal-animation script above for why astro:page-load (not bare
+  // top-level code) is required after View Transitions navigation.
+  document.addEventListener("astro:page-load", () => {
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    if (!form) return;
+
+    const status = form.querySelector<HTMLParagraphElement>(".form-status");
+    const submitBtn = form.querySelector<HTMLButtonElement>(".btn-submit");
+    const submitLabel = form.querySelector<HTMLSpanElement>(".btn-submit-label");
+    const emailInput = form.querySelector<HTMLInputElement>("#contact-email");
+
+    const messages = {
+      sending: form.dataset.msgSending ?? "Sending...",
+      success: form.dataset.msgSuccess ?? "Sent!",
+      error: form.dataset.msgError ?? "Something went wrong.",
+      required: form.dataset.msgRequired ?? "Fill in every field.",
+      invalidEmail: form.dataset.msgInvalidEmail ?? "Enter a valid email.",
+      send: form.dataset.labelSend ?? "Send",
+    };
+
+    function setStatus(text: string, state?: "success" | "error") {
+      if (!status) return;
+      status.textContent = text;
+      if (state) status.setAttribute("data-state", state);
+      else status.removeAttribute("data-state");
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const data = new FormData(form);
+      const firstName = String(data.get("firstName") ?? "").trim();
+      const lastName = String(data.get("lastName") ?? "").trim();
+      const email = String(data.get("email") ?? "").trim();
+      const message = String(data.get("message") ?? "").trim();
+      const website = String(data.get("website") ?? "").trim();
+
+      if (!firstName || !lastName || !email || !message) {
+        setStatus(messages.required, "error");
+        return;
+      }
+      if (!emailInput?.checkValidity()) {
+        setStatus(messages.invalidEmail, "error");
+        return;
+      }
+
+      if (submitBtn) submitBtn.disabled = true;
+      if (submitLabel) submitLabel.textContent = messages.sending;
+      setStatus(messages.sending);
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ firstName, lastName, email, message, website }),
+        });
+
+        if (!response.ok) throw new Error(`status ${response.status}`);
+
+        setStatus(messages.success, "success");
+        form.reset();
+      } catch {
+        setStatus(messages.error, "error");
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitLabel) submitLabel.textContent = messages.send;
+      }
+    });
   });
 </script>

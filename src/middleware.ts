@@ -6,7 +6,7 @@ export const onRequest = defineMiddleware((context, next) => {
   const pathname = url.pathname;
 
   // Skip assets and API
-  if (pathname.startsWith("/favicon") || pathname.includes(".")) {
+  if (pathname.startsWith("/favicon") || pathname.startsWith("/api/") || pathname.includes(".")) {
     return next();
   }
 
