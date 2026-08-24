@@ -157,10 +157,14 @@ const skills: Skill[] = [
   .skills-title {
     font-family: var(--font-display);
     letter-spacing: 0.03em;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 800;
     color: hsl(var(--foreground));
     margin-bottom: 1rem;
+    /* See Hero.astro's .hero-title comment: Press Start 2P renders words
+       much wider than normal, so long words need to be able to break. */
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   @media (min-width: 768px) {
@@ -181,18 +185,19 @@ const skills: Skill[] = [
   /* Grid */
   .skills-grid {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;
   }
 
   @media (min-width: 768px) {
     .skills-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   @media (min-width: 1024px) {
     .skills-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 

@@ -239,13 +239,18 @@ const contactHref = `/${lang}/#contact`;
 
 	.about .intro-grid {
 		display: grid;
+		/* See Hero.astro's .hero-grid comment: grid items default to
+		   min-width: auto, so without an explicit track size the mobile
+		   single column sizes itself to the heading's unwrapped intrinsic
+		   width instead of letting it wrap. */
+		grid-template-columns: minmax(0, 1fr);
 		gap: 1.75rem;
 		align-items: center;
 	}
 
 	@media (min-width: 1024px) {
 		.about .intro-grid {
-			grid-template-columns: 1.2fr 0.8fr;
+			grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
 			gap: 2.5rem;
 		}
 	}
@@ -256,6 +261,10 @@ const contactHref = `/${lang}/#contact`;
 		line-height: 1.08;
 		margin: 0 0 0.9rem;
 		color: hsl(var(--foreground));
+		/* See Hero.astro's .hero-title comment: Press Start 2P (.font-display)
+		   renders words much wider than normal, so long words need to break. */
+		overflow-wrap: break-word;
+		word-break: break-word;
 	}
 
 	@media (min-width: 768px) {
@@ -362,12 +371,13 @@ const contactHref = `/${lang}/#contact`;
 
 	.about .journey-grid {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 1.25rem;
 	}
 
 	@media (min-width: 1024px) {
 		.about .journey-grid {
-			grid-template-columns: repeat(3, 1fr);
+			grid-template-columns: repeat(3, minmax(0, 1fr));
 			gap: 1.5rem;
 		}
 	}
@@ -415,13 +425,14 @@ const contactHref = `/${lang}/#contact`;
 
 	.about .philo-grid {
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 1.75rem;
 		align-items: start;
 	}
 
 	@media (min-width: 1024px) {
 		.about .philo-grid {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 			gap: 2rem;
 		}
 	}

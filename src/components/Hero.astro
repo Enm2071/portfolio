@@ -125,13 +125,19 @@ const t = useTranslations(lang);
 
   .hero-grid {
     display: grid;
+    /* Grid items default to min-width: auto, so without an explicit track
+       size the single implicit mobile column sizes itself to the hero
+       title's unwrapped intrinsic width (a long phrase at a large display
+       font) instead of letting it wrap -- causing real horizontal overflow,
+       not just "big text". minmax(0, 1fr) is the standard fix. */
+    grid-template-columns: minmax(0, 1fr);
     gap: 4rem;
     align-items: center;
   }
 
   @media (min-width: 1024px) {
     .hero-grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 5rem;
     }
   }
@@ -192,11 +198,16 @@ const t = useTranslations(lang);
   .hero-title {
     font-family: var(--font-display);
     letter-spacing: 0.02em;
-    font-size: 3rem;
+    font-size: 2.25rem;
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
     color: hsl(var(--foreground));
+    /* --font-display (Press Start 2P) renders individual words much wider
+       than a normal typeface -- without this, a single long word can
+       overflow its container on narrow screens instead of wrapping. */
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   @media (min-width: 768px) {
