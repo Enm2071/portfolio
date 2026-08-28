@@ -5,9 +5,18 @@ import AboutPage from "../../components/AboutPage.astro";
 import { useTranslations } from "../../i18n/utils";
 
 const t = useTranslations("es");
+
+// Static across requests -- statically build it instead of paying the SSR
+// cost (locale/data lookups, template render) on every crawl/visit.
+export const prerender = true;
+
+const breadcrumbs = [
+	{ name: t("breadcrumb_home"), path: "" },
+	{ name: t("breadcrumb_about"), path: "/about" },
+];
 ---
 
-<Layout title={t("about_page_title")} description={t("about_page_description")}>
+<Layout title={t("about_page_title")} description={t("about_page_description")} breadcrumbs={breadcrumbs}>
 	<div class="page">
 		<Navbar />
 		<main>

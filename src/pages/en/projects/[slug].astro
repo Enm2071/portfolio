@@ -8,13 +8,44 @@ import { getProjectBySlug } from "../../../data/projects";
 const { slug } = Astro.params;
 const t = useTranslations("en");
 const meta = getProjectBySlug(slug as string);
-const pageTitle = meta
-	? `${t(`${meta.i18nKey}_title` as Parameters<typeof t>[0])} — Ernesto Nuñez Marrero`
-	: t("project_detail_not_found_title");
+const projectTitle = meta ? t(`${meta.i18nKey}_title` as Parameters<typeof t>[0]) : undefined;
+const pageTitle = meta ? `${projectTitle} — Ernesto Nuñez Marrero` : t("project_detail_not_found_title");
 const pageDescription = meta ? t(`${meta.i18nKey}_description` as Parameters<typeof t>[0]) : undefined;
+
+const breadcrumbs = meta
+	? [
+			{ name: t("breadcrumb_home"), path: "" },
+			{ name: t("breadcrumb_projects"), path: "/#projects" },
+			{ name: projectTitle!, path: `/projects/${slug}` },
+		]
+	: undefined;
+
+// Rich-result eligible: a project detail page is a portfolio work sample,
+// which schema.org models as CreativeWork (tags -> keywords, the project
+// image/description already computed above for OG/Twitter get reused here
+// too rather than re-derived).
+const structuredData = meta
+	? [
+			{
+				"@type": "CreativeWork",
+				name: projectTitle,
+				description: pageDescription,
+				image: meta.image,
+				keywords: meta.tags.join(", "),
+				url: Astro.url.href,
+				creator: { "@id": `${Astro.site}#person` },
+			},
+		]
+	: undefined;
 ---
 
-<Layout title={pageTitle} description={pageDescription} image={meta?.image}>
+<Layout
+	title={pageTitle}
+	description={pageDescription}
+	image={meta?.image}
+	breadcrumbs={breadcrumbs}
+	structuredData={structuredData}
+>
 	<div class="page">
 		<Navbar />
 		<main>

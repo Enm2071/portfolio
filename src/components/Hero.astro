@@ -83,7 +83,7 @@ const t = useTranslations(lang);
           <!-- Imagen real (descomentar si la quieres visible) -->
           <img
             src={profileImage.src}
-            alt="Profile"
+            alt={t("profile_photo_alt")}
             class="real-image centered-image"
             transition:name="profile-photo"
           />
