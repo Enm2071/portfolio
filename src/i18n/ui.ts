@@ -224,6 +224,10 @@ export const ui = {
     project_12_description:
       "Plataforma de facturación electrónica y reportes fiscales (606/607) para República Dominicana. Motor de extracción de facturas con AWS Textract y aprendizaje incremental de plantillas, backend serverless (Cognito, DynamoDB, S3, EventBridge, SQS, Lambda), cobros recurrentes con Stripe y autenticación con Google OAuth.",
 
+    project_13_title: "Plataforma de Rifas — Verificación Manual de Pagos",
+    project_13_description:
+      "Plataforma de rifas en producción para un concesionario dominicano: reserva de números con expiración automática, reporte de comprobantes de transferencia con revisión manual, programa de referidos con detección de ciclos anti-fraude, y panel admin con KPIs, notificaciones push y confirmaciones automáticas por correo. Infraestructura propia en VPS (Postgres con SSL forzado, MinIO con credenciales de acceso limitadas, fail2ban) y respaldos semanales automatizados con n8n.",
+
     /* ============================
         PROJECT DETAIL PAGE
     ============================ */
@@ -459,6 +463,10 @@ export const ui = {
     project_12_title: "Alianca Reportes — DGII Invoicing & Tax Reports",
     project_12_description:
       "Electronic invoicing and tax reporting platform (606/607) for the Dominican Republic. Invoice extraction engine built on AWS Textract with incremental template learning, a serverless backend (Cognito, DynamoDB, S3, EventBridge, SQS, Lambda), recurring billing with Stripe, and Google OAuth authentication.",
+
+    project_13_title: "Raffle Platform — Manual Payment Verification",
+    project_13_description:
+      "Production raffle platform for a Dominican car dealership: ticket reservation with automatic expiration, bank-transfer proof reporting with manual review, a referral program with anti-fraud cycle detection, and an admin panel with KPIs, push notifications, and automatic email confirmations. Self-hosted infrastructure on a VPS (SSL-enforced Postgres, scoped MinIO credentials, fail2ban) with automated weekly backup reports via n8n.",
 
     /* ============================
         PROJECT DETAIL PAGE

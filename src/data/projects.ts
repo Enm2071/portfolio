@@ -83,6 +83,12 @@ export const projects: ProjectMeta[] = [
     tags: ["Next.js", "TypeScript", "MUI", "AWS Textract", "DynamoDB", "Lambda", "Stripe"],
     image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80",
   },
+  {
+    slug: "car-raffle-platform",
+    i18nKey: "project_13",
+    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "MinIO", "Docker", "n8n", "Resend"],
+    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+  },
 ];
 
 export function getProjectBySlug(slug: string): ProjectMeta | undefined {
